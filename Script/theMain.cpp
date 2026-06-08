@@ -17,8 +17,8 @@ namespace
 	int crrTime;
 	int prevTime;
 	//実際のスクリーン（ウィンドウ）サイズ
-	const int SCREEN_WIDHT = 1280;
-	const int SCREEN_HEIGHT = 720;
+	const int SCREEN_WIDHT = 1920;
+	const int SCREEN_HEIGHT = 1080;
 }
 
 

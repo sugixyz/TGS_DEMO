@@ -11,6 +11,7 @@
 #include"../Tool/Input.h"
 #include "DxLib.h"
 #include"../Collid/Collider.h"
+#include<assert.h>
 
 /// <summary>
 /// これを継承したクラスのインスタンスは、ObjectManagerで管理され、

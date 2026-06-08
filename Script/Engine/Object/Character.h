@@ -20,6 +20,16 @@ public:
 	/// </summary>
 	/// <returns>現在の速度</returns>
 	Vector2 GetVel() { return velocity; }
+	/// <summary>
+	/// 方向の設定
+	/// </summary>
+	/// <param name="dir">適応する方向</param>
+	void SetDir(Vector2 dir) { direction = dir; }
+	/// <summary>
+	/// 方向を取得する
+	/// </summary>
+	/// <returns>現在の方向</returns>
+	Vector2 GetDir() { return direction; }
 
 	/// <summary>
 	/// ポジションを中心とした円コライダーのセット
@@ -50,6 +60,8 @@ public:
 protected:
 	//速度
 	Vector2 velocity;
+	//方向
+	Vector2 direction;
 	//半径
 	int radius;
 };

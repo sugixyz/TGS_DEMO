@@ -5,6 +5,7 @@
 
 #include "ObjectManager.h"
 #include "GameObject.h"
+#include"../Tool/ParamLoader.h"
 #include <assert.h>
 #include<array>
 #include<vector>
@@ -27,6 +28,7 @@ void ObjectManager::Initialize()
 		list.clear();
 	}
 	running = nullptr;
+	Loader::AllClassParamLoad();
 }
 
 void ObjectManager::Update()
