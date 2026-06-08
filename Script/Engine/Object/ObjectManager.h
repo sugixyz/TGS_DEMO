@@ -120,3 +120,13 @@ inline std::vector<GameObject*> FindTagObjects(Tag tag)
 {
 	return ObjectManager::GetTagObject(tag);
 }
+
+/// <summary>
+/// タブを指定してオブジェクトを返す
+/// </summary>
+/// <param name="tag">タグ名</param>
+/// <returns>オブジェクトのポインタ</returns>
+inline GameObject* FindTagObject(Tag tag)
+{
+	return ObjectManager::GetTagObject(tag)[0];
+}

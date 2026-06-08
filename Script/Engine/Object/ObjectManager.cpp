@@ -144,6 +144,8 @@ void ObjectManager::DeleteAllGameObject()
 			}
 		}
 	}
+
+	Loader::AllClassParamLoad();
 }
 
 const std::vector<GameObject*>& ObjectManager::GetTagObject(Tag tag)
