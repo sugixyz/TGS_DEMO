@@ -41,25 +41,29 @@ namespace Input {
 	/// 指定したボタンの押し込み検出
 	/// </summary>
 	/// <param name="padCode">ボタンの名前(enum Pad::)</param>
+	/// <param name="padId">パッドの名前</param>
 	/// <returns>押されたらtrue</returns>
-	bool IsPadUp(int padCode);
+	bool IsPadUp(int padCode,int padId);
 	/// <summary>
 	/// 指定したボタンの引き上げ検出
 	/// </summary>
 	/// <param name="padCode">ボタンの名前(enum Pad::)</param>
+	/// <param name="padId">パッドの名前</param>
 	/// <returns>上げられたらtrue</returns>
-	bool IsPadDown(int padCode);
+	bool IsPadDown(int padCode, int padId);
 	/// <summary>
 	/// 指定したボタンの継続入力検出
 	/// </summary>
 	/// <param name="padCode">ボタンの名前(enum Pad::)</param>
+	/// <param name="padId">パッドの名前</param>
 	/// <returns>長押しされてたらtrue</returns>
-	int IsKeepPadDown(int padCode);
+	int IsKeepPadDown(int padCode, int padId);
 	/// <summary>
 	/// アナログスティックの入力数値取得
 	/// </summary>
+	/// <param name="padId">パッドの名前</param>
 	/// <returns>左右:x 上下:y</returns>
-	Vector2 GetStick();
+	Vector2 GetStick(int padId);
 }
 
 enum Pad

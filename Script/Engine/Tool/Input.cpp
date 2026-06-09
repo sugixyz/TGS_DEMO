@@ -16,13 +16,13 @@ namespace Input {
 
 	//コントローラー取得関連
 	const int PAD_MAX = 32;
-	char padBuff[PAD_MAX];      //現フレーム
-	char padBuffOld[PAD_MAX];   //前フレーム
-	char pad_down[PAD_MAX];     //押された瞬間
-	char pad_up[PAD_MAX];       //離された瞬間
-	char pad_keep[PAD_MAX];     //押しっぱなし
+	char padBuff[2][PAD_MAX];      //現フレーム
+	char padBuffOld[2][PAD_MAX];   //前フレーム
+	char pad_down[2][PAD_MAX];     //押された瞬間
+	char pad_up[2][PAD_MAX];       //離された瞬間
+	char pad_keep[2][PAD_MAX];     //押しっぱなし
 	//スティックの値を保持する変数
-	int stickX = 0, stickY = 0;
+	int stickX[2], stickY[2];
 
 }
 
@@ -62,49 +62,56 @@ int Input::IsKeepKeyDown(int keyCode)
 
 void Input::PadStateUpdate()
 {
-	memcpy_s(padBuffOld, sizeof(char) * PAD_MAX, padBuff, sizeof(char) * PAD_MAX);
+	//1Pか2Pかの識別子
+	int padId[2] = { DX_INPUT_PAD1,DX_INPUT_PAD2 };
 
-	int inputBit = GetJoypadInputState(DX_INPUT_PAD1);
-
-	for (int i = 0; i < PAD_MAX; i++)
+	for (int p = 0; p < 2; p++)
 	{
-		//i番目のビットが立っているかチェック
-		if (inputBit & (1 << i))
+		memcpy_s(padBuffOld[p], sizeof(char) * PAD_MAX, padBuff[p], sizeof(char) * PAD_MAX);
+
+		int inputBit = GetJoypadInputState(padId[p]);
+
+		for (int i = 0; i < PAD_MAX; i++)
 		{
-			padBuff[i] = 1;
-		}
-		else
-		{
-			padBuff[i] = 0;
+			//i番目のビットが立っているかチェック
+			if (inputBit & (1 << i))
+			{
+				padBuff[p][i] = 1;
+			}
+			else
+			{
+				padBuff[p][i] = 0;
+			}
+
+			if (padBuff[p][i] && padBuffOld[p][i]) pad_keep[p][i]++;
+			if (pad_keep[p][i] < 0)pad_keep[p][i] = 1; //オーバーフロー対策
+			int pad_xor = padBuff[p][i] ^ padBuffOld[p][i];	//前フレームと現フレームのxor
+			if (pad_xor) pad_keep[p][i] = 0;
+			pad_down[p][i] = pad_xor & padBuff[p][i];		//押された瞬間 = (現フレームとkey_xorのAND) 
+			pad_up[p][i] = pad_xor & padBuffOld[p][i];	//離された瞬間 = (前フレームとkey_xorのAND) 
 		}
 
-		if (padBuff[i] && padBuffOld[i]) pad_keep[i]++;
-		if (pad_keep[i] < 0)pad_keep[i] = 1; //オーバーフロー対策
-		int pad_xor = padBuff[i] ^ padBuffOld[i];	//前フレームと現フレームのxor
-		if (pad_xor) pad_keep[i] = 0;
-		pad_down[i] = pad_xor & padBuff[i];		//押された瞬間 = (現フレームとkey_xorのAND) 
-		pad_up[i] = pad_xor & padBuffOld[i];	//離された瞬間 = (前フレームとkey_xorのAND) 
+		GetJoypadAnalogInput(&stickX[p], &stickY[p], DX_INPUT_PAD1);
+
 	}
-
-	GetJoypadAnalogInput(&stickX, &stickY, DX_INPUT_PAD1);
 }
 
-bool Input::IsPadUp(int padCode)
+bool Input::IsPadUp(int padCode, int padId)
 {
-	return pad_up[padCode];
+	return pad_up[padId][padCode];
 }
 
-bool Input::IsPadDown(int padCode)
+bool Input::IsPadDown(int padCode, int padId)
 {
-	return pad_down[padCode];
+	return pad_down[padId][padCode];
 }
 
-int Input::IsKeepPadDown(int padCode)
+int Input::IsKeepPadDown(int padCode, int padId)
 {
-	return pad_keep[padCode];
+	return pad_keep[padId][padCode];
 }
 
-Vector2 Input::GetStick()
+Vector2 Input::GetStick(int padId)
 {
-	return Vector2((float)Input::stickX,(float)Input::stickY);
+	return Vector2((float)Input::stickX[padId],(float)Input::stickY[padId]);
 }
