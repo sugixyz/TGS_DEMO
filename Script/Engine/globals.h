@@ -17,6 +17,8 @@ const int COL_GREEN = GetColor(0, 255, 0);
 const int COL_BLUE = GetColor(0, 0, 255);
 //白
 const int COL_WHITE = GetColor(255, 255, 255);
+//グレー
+const int COL_GRAY = GetColor(128, 128, 128);
 //黒
 const int COL_BLACK = GetColor(0, 0, 0);
 //シアン

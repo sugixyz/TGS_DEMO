@@ -148,6 +148,7 @@
     <ClCompile Include="Script\Engine\Tool\ParamLoader.cpp" />
     <ClCompile Include="Script\SourceCode\AiDirector.cpp" />
     <ClCompile Include="Script\SourceCode\Player.cpp" />
+    <ClCompile Include="Script\SourceCode\StageObject.cpp" />
     <ClCompile Include="Script\SourceCode\Ui.cpp" />
     <ClCompile Include="Script\theMain.cpp" />
   </ItemGroup>
@@ -173,6 +174,7 @@
     <ClInclude Include="Script\Engine\Tool\Input.h" />
     <ClInclude Include="Script\Engine\Tool\Lerp.h" />
     <ClInclude Include="Script\Engine\Tool\Math2D.h" />
+    <ClInclude Include="Script\Engine\Tool\Math3D.h" />
     <ClInclude Include="Script\Engine\Tool\ParamLoader.h" />
     <ClInclude Include="Script\Engine\Tool\Time.h" />
     <ClInclude Include="Script\SourceCode\AiDirector.h" />

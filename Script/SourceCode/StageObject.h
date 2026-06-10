@@ -1,4 +1,12 @@
-#pragma once
+﻿#pragma once
+#include"../Engine/Object/GameObject.h"
 
-//ToDo : 位置、回転、スケール、IDをもらう
-//IDによってモデルを変える
+class StageObject : public GameObject
+{
+public:
+	StageObject(Vector3 pos, Vector3 rot, Vector3 sca, int id);
+	~StageObject();
+	void Draw() override;
+private:
+	int objId = 0;
+};

@@ -8,6 +8,7 @@
 #include"../Scene/SceneManager.h"
 #include"../globals.h"
 #include"../Tool/Math2D.h"
+#include"../Tool/Math3D.h"
 #include"../Tool/Input.h"
 #include "DxLib.h"
 #include"../Collid/Collider.h"
@@ -156,4 +157,9 @@ protected:
 	int hImage = -1;
 	//位置 コリジョン処理の関係でGameObjectに移動
 	Vector2 position;
+
+	//3D描画用の変数
+	Vector3 position3;
+	Vector3 rotation3;
+	Vector3 scale3;
 };
