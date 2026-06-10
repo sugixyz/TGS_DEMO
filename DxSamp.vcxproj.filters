@@ -25,6 +25,9 @@
     <Filter Include="AiDirector">
       <UniqueIdentifier>{27d2045d-0163-4deb-99ea-10f382590e13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StageObject">
+      <UniqueIdentifier>{5660c4d8-57d1-4a8f-8f87-6f0e335d255c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Script\Engine\Tool\CsvReader.cpp">
@@ -158,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="Script\SourceCode\AiDirector.h">
       <Filter>AiDirector</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\StageObject.h">
+      <Filter>StageObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
