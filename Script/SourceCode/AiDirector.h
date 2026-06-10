@@ -8,6 +8,11 @@ public:
 	~AiDirector();
 	static void LoadParam();
 private:
+	//ステージオブジェクトを作成
 	void CreateStageObject();
-	void CheckParam();
+	//拠点の当たり判定の生成
+	void CreateBase();
+private:
+	static int BASE_BLOCK;
+	static int BASE_OFFSET_Y;
 };

@@ -15,7 +15,8 @@ Player::Player(int index)
 	radius = RADIUS;
 	direction = Math2D::UP;
 
-	//SPEED = 0;
+	uint32_t mask = (uint32_t)Layer::STAGE;
+	SetCenterCircle(Layer::PLAYER, mask);
 }
 
 Player::~Player()
@@ -57,7 +58,12 @@ void Player::Move()
 }
 
 void Player::OnCollision(GameObject * other)
-{}
+{
+	if (other->GetTag() == Tag::STAGE)
+	{
+		CollisionWall(other);
+	}
+}
 
 void Player::LoadParam()
 {
@@ -71,4 +77,45 @@ void Player::LoadParam()
 			else if (key == "RADIUS")			{ ss >> RADIUS; }
 		}
 	);
+}
+
+void Player::CollisionWall(GameObject* wall)
+{
+	Collider wallCol = wall->GetCollider();
+	Vector2 wPos = wall->GetPos();
+	//壁の高さ、幅
+	float wallW = wallCol.bPosB.x - wallCol.bPosA.x;
+	float wallH = wallCol.bPosB.y - wallCol.bPosA.y;
+
+	float overlapX = (this->radius + wallW / 2.0f) - abs(this->position.x - wPos.x);
+	float overlapY = (this->radius + wallH / 2.0f) - abs(this->position.y - wPos.y);
+
+	//当たったのが左右の壁なら
+	if (overlapX < overlapY)
+	{
+		//壁が右にあるなら
+		if (this->position.x < wPos.x)
+		{
+			this->position.x -= overlapX;
+		}
+		//壁が左にあるなら
+		else
+		{
+			this->position.x += overlapX;
+		}
+	}
+	//当たったのが上下の壁なら
+	else
+	{
+		//壁が上にあるなら
+		if (this->position.y < wPos.y)
+		{
+			this->position.y -= overlapY;
+		}
+		//壁が下にあるなら
+		else
+		{
+			this->position.y += overlapY;
+		}
+	}
 }

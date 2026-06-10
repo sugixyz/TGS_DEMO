@@ -15,6 +15,8 @@ private:
 	int hp;
 	int id;
 private:
+	void CollisionWall(GameObject* other);
+private:
 	static int MAX_HP;
 	static float SPEED;
 	static Vector2 SPAWN_POS[2];

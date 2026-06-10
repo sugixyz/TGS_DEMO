@@ -1,7 +1,12 @@
 ﻿#include "AiDirector.h"
 #include"Player.h"
-#include"../Engine/Tool/ParamLoader.h"
 #include"StageObject.h"
+#include"Base.h"
+#include"../Engine/Tool/ParamLoader.h"
+#include"../Engine/Tool/CsvReader.h"
+
+int AiDirector::BASE_BLOCK;
+int AiDirector::BASE_OFFSET_Y;
 
 AiDirector::AiDirector()
 	:GameObject(Tag::SYSTEM)
@@ -9,6 +14,7 @@ AiDirector::AiDirector()
 	new Player(0);
 	new Player(1);
 	CreateStageObject();
+	CreateBase();
 }
 
 AiDirector::~AiDirector()
@@ -28,7 +34,6 @@ void AiDirector::CreateStageObject()
 
 	std::string line;
 	int objNum = 0;
-	int BaseBlockSize = 0;
 	while (std::getline(file, line))
 	{
 		//もし空行か、コメントだったらスルー
@@ -39,9 +44,10 @@ void AiDirector::CreateStageObject()
 		if (ss >> key >> eq)
 		{
 			if (key == "OBJ_NUM") { ss >> objNum; }
-			else if(key == "BASE_BLOCK")
+			else if (key == "BASE_BLOCK") { ss >> BASE_BLOCK; }
+			else if (key == "BASE_OFFSET_Y")
 			{
-				ss >> BaseBlockSize;
+				ss >> BASE_OFFSET_Y;
 				break;
 			}
 		}
@@ -72,6 +78,37 @@ void AiDirector::CreateStageObject()
 					break;
 				}
 			}
+		}
+	}
+}
+
+void AiDirector::CreateBase()
+{
+	std::vector<std::vector<int>> map;
+	char path[50] = "Assets/StageObject/Base.csv";
+	CsvReader* csv = new CsvReader(path);
+	int lines = csv->GetLines(); //csvの行数
+	map.resize(lines);
+	for (int y = 0; y < lines; y++) { //1行ずつ読む
+		int cols = csv->GetColumns(y);
+		map[y].resize(cols);
+		for (int x = 0; x < cols; x++) {
+			map[y][x] = csv->GetInt(y, x);
+		}
+	}
+	delete csv;
+
+	for (int y = 0; y < map.size(); y++) {
+		for (int x = 0; x < map[y].size(); x++) {
+			if (map[y][x] == 1)
+			{
+				Vector2 pos = Vector2(x, y) * BASE_BLOCK;
+				pos.y += BASE_OFFSET_Y;
+				new Base(pos, BASE_BLOCK);
+			}
+			else if (map[y][x] == 2)continue;
+			else if (map[y][x] == 3)continue;
+			else if (map[y][x] == 4)continue;
 		}
 	}
 }
