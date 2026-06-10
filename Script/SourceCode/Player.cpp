@@ -14,6 +14,8 @@ Player::Player(int index)
 	hp = MAX_HP;
 	radius = RADIUS;
 	direction = Math2D::UP;
+
+	//SPEED = 0;
 }
 
 Player::~Player()
@@ -37,12 +39,18 @@ void Player::Draw()
 
 void Player::Move()
 {
-	velocity = { 0,0 };
 	Vector2 stick = Input::GetStick(id);
 	if (stick != Vector2(0, 0))
 	{
 		direction = Math2D::Normalize(stick);
-		velocity = direction * SPEED;
+		if (Math2D::Length(stick) >= 0.5f)
+		{
+			velocity = direction * SPEED;
+		}
+	}
+	else
+	{
+		velocity = { 0,0 };
 	}
 
 	position += velocity;

@@ -23,7 +23,6 @@ namespace Input {
 	char pad_keep[2][PAD_MAX];     //押しっぱなし
 	//スティックの値を保持する変数
 	int stickX[2], stickY[2];
-
 }
 
 void Input::KeyStateUpdate()
@@ -91,7 +90,7 @@ void Input::PadStateUpdate()
 			pad_up[p][i] = pad_xor & padBuffOld[p][i];	//離された瞬間 = (前フレームとkey_xorのAND) 
 		}
 
-		GetJoypadAnalogInput(&stickX[p], &stickY[p], DX_INPUT_PAD1);
+		GetJoypadAnalogInput(&stickX[p], &stickY[p], padId[p]);
 	}
 	AssociateKey();
 }
@@ -121,47 +120,47 @@ void Input::AssociateKey()
 	//パッド１
 	int id = 0;
 	//Wでパッド１のスティック上
-	if (Input::IsKeepKeyDown(KEY_INPUT_W))stickY[id] = -32768;
+	if (Input::IsKeepKeyDown(KEY_INPUT_W))stickY[id] = -1000;
 	else if (Input::IsKeyUP(KEY_INPUT_W))stickY[id] = 0;
 	//Sでパッド１のスティック下
-	if (Input::IsKeepKeyDown(KEY_INPUT_S))stickY[id] = 32767;
+	if (Input::IsKeepKeyDown(KEY_INPUT_S))stickY[id] = 1000;
 	else if (Input::IsKeyUP(KEY_INPUT_S))stickY[id] = 0;
 	//Aでパッド１のスティック左
-	if (Input::IsKeepKeyDown(KEY_INPUT_A))stickX[id] = -32768;
+	if (Input::IsKeepKeyDown(KEY_INPUT_A))stickX[id] = -1000;
 	else if (Input::IsKeyUP(KEY_INPUT_A))stickX[id] = 0;
 	//Dでパッド１のスティック右
-	if (Input::IsKeepKeyDown(KEY_INPUT_D))stickX[id] = 32767;
+	if (Input::IsKeepKeyDown(KEY_INPUT_D))stickX[id] = 1000;
 	else if (Input::IsKeyUP(KEY_INPUT_D))stickX[id] = 0;
 
 	//パッド２
 	id = 1;
 	//↑でパッド２のスティック上
-	if (Input::IsKeepKeyDown(KEY_INPUT_UP))stickY[id] = -32768;
+	if (Input::IsKeepKeyDown(KEY_INPUT_UP))stickY[id] = -1000;
 	else if (Input::IsKeyUP(KEY_INPUT_UP))stickY[id] = 0;
 	//↓でパッド２のスティック下
-	if (Input::IsKeepKeyDown(KEY_INPUT_DOWN))stickY[id] = 32767;
+	if (Input::IsKeepKeyDown(KEY_INPUT_DOWN))stickY[id] = 1000;
 	else if (Input::IsKeyUP(KEY_INPUT_DOWN))stickY[id] = 0;
 	//←でパッド２のスティック左
-	if (Input::IsKeepKeyDown(KEY_INPUT_LEFT))stickX[id] = -32768;
+	if (Input::IsKeepKeyDown(KEY_INPUT_LEFT))stickX[id] = -1000;
 	else if (Input::IsKeyUP(KEY_INPUT_LEFT))stickX[id] = 0;
 	//→でパッド２のスティック右
-	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))stickX[id] = 32767;
+	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))stickX[id] = 1000;
 	else if (Input::IsKeyUP(KEY_INPUT_RIGHT))stickX[id] = 0;
 }
 
 Vector2 Input::CangeNumberToRate(Vector2 n)
 {
 	Vector2 rate;
-	// -32768～32767を-1～1に変換して返す
-	rate.x = n.x / 32767.0f;
-	rate.y = n.y / 32767.0f;
+	//1～-1の割合にして返す
+	rate.x = n.x / 1000.0f;
+	rate.y = n.y / 1000.0f;
 	//制限
 	if (rate.x > 1.0f)rate.x = 1.0f;
 	if (rate.x < -1.0f)rate.x = -1.0f;
 	if (rate.y > 1.0f)rate.y = 1.0f;
 	if (rate.y < -1.0f)rate.y = -1.0f;
-	//中央を無視
-	if (-0.2f < rate.x && rate.x < 0.2f)rate.x = 0.0f;
-	if (-0.2f < rate.y && rate.y < 0.2f)rate.y = 0.0f;
+	////中央を無視
+	//if (-0.1f < rate.x && rate.x < 0.1f)rate.x = 0.0f;
+	//if (-0.1f < rate.y && rate.y < 0.1f)rate.y = 0.0f;
 	return rate;
 }
