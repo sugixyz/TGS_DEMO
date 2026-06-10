@@ -17,7 +17,6 @@ private:
 private:
 	static int MAX_HP;
 	static float SPEED;
-	static Vector2 SPAWN_POS_1;
-	static Vector2 SPAWN_POS_2;
+	static Vector2 SPAWN_POS[2];
 	static float RADIUS;
 };

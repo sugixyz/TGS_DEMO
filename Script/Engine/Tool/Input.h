@@ -64,6 +64,13 @@ namespace Input {
 	/// <param name="padId">パッドの名前</param>
 	/// <returns>左右:x 上下:y</returns>
 	Vector2 GetStick(int padId);
+
+	/// <summary>
+	/// キー入力をパッド入力に対応づける
+	/// </summary>
+	void AssociateKey();
+
+	Vector2 CangeNumberToRate(Vector2 n);
 }
 
 enum Pad

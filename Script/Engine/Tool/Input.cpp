@@ -92,8 +92,8 @@ void Input::PadStateUpdate()
 		}
 
 		GetJoypadAnalogInput(&stickX[p], &stickY[p], DX_INPUT_PAD1);
-
 	}
+	AssociateKey();
 }
 
 bool Input::IsPadUp(int padCode, int padId)
@@ -113,5 +113,55 @@ int Input::IsKeepPadDown(int padCode, int padId)
 
 Vector2 Input::GetStick(int padId)
 {
-	return Vector2((float)Input::stickX[padId],(float)Input::stickY[padId]);
+	return CangeNumberToRate(Vector2(stickX[padId], stickY[padId]));
+}
+
+void Input::AssociateKey()
+{
+	//パッド１
+	int id = 0;
+	//Wでパッド１のスティック上
+	if (Input::IsKeepKeyDown(KEY_INPUT_W))stickY[id] = -32768;
+	else if (Input::IsKeyUP(KEY_INPUT_W))stickY[id] = 0;
+	//Sでパッド１のスティック下
+	if (Input::IsKeepKeyDown(KEY_INPUT_S))stickY[id] = 32767;
+	else if (Input::IsKeyUP(KEY_INPUT_S))stickY[id] = 0;
+	//Aでパッド１のスティック左
+	if (Input::IsKeepKeyDown(KEY_INPUT_A))stickX[id] = -32768;
+	else if (Input::IsKeyUP(KEY_INPUT_A))stickX[id] = 0;
+	//Dでパッド１のスティック右
+	if (Input::IsKeepKeyDown(KEY_INPUT_D))stickX[id] = 32767;
+	else if (Input::IsKeyUP(KEY_INPUT_D))stickX[id] = 0;
+
+	//パッド２
+	id = 1;
+	//↑でパッド２のスティック上
+	if (Input::IsKeepKeyDown(KEY_INPUT_UP))stickY[id] = -32768;
+	else if (Input::IsKeyUP(KEY_INPUT_UP))stickY[id] = 0;
+	//↓でパッド２のスティック下
+	if (Input::IsKeepKeyDown(KEY_INPUT_DOWN))stickY[id] = 32767;
+	else if (Input::IsKeyUP(KEY_INPUT_DOWN))stickY[id] = 0;
+	//←でパッド２のスティック左
+	if (Input::IsKeepKeyDown(KEY_INPUT_LEFT))stickX[id] = -32768;
+	else if (Input::IsKeyUP(KEY_INPUT_LEFT))stickX[id] = 0;
+	//→でパッド２のスティック右
+	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))stickX[id] = 32767;
+	else if (Input::IsKeyUP(KEY_INPUT_RIGHT))stickX[id] = 0;
+}
+
+Vector2 Input::CangeNumberToRate(Vector2 n)
+{
+	Vector2 rate;
+	// -32768～32767を-1～1に変換して返す
+	rate.x = n.x / 32767.0f;
+	rate.y = n.y / 32767.0f;
+	//制限
+	if (rate.x > 1.0f)rate.x = 1.0f;
+	if (rate.x < -1.0f)rate.x = -1.0f;
+	if (rate.y > 1.0f)rate.y = 1.0f;
+	if (rate.y < -1.0f)rate.y = -1.0f;
+	//中央を無視
+	if (-0.2f < rate.x && rate.x < 0.2f)rate.x = 0.0f;
+	if (-0.2f < rate.y && rate.y < 0.2f)rate.y = 0.0f;
+	return rate;
 }

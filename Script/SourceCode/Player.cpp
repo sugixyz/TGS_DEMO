@@ -3,15 +3,14 @@
 
 int Player::MAX_HP;
 float Player::SPEED;
-Vector2 Player::SPAWN_POS_1;
-Vector2 Player::SPAWN_POS_2;
+Vector2 Player::SPAWN_POS[2];
 float Player::RADIUS;
 
 Player::Player(int index)
 	:Character(Tag::PLAYER)
 {
 	id = index;
-	position = SPAWN_POS_1;
+	position = SPAWN_POS[id];
 	hp = MAX_HP;
 	radius = RADIUS;
 	direction = Math2D::UP;
@@ -39,24 +38,10 @@ void Player::Draw()
 void Player::Move()
 {
 	velocity = { 0,0 };
-	if (Input::IsKeepKeyDown(KEY_INPUT_W))
+	Vector2 stick = Input::GetStick(id);
+	if (stick != Vector2(0, 0))
 	{
-		direction = Math2D::UP;
-		velocity = direction * SPEED;
-	}
-	else if (Input::IsKeepKeyDown(KEY_INPUT_S))
-	{
-		direction = Math2D::DOWN;
-		velocity = direction * SPEED;
-	}
-	if (Input::IsKeepKeyDown(KEY_INPUT_A))
-	{
-		direction = Math2D::LEFT;
-		velocity = direction * SPEED;
-	}
-	else if (Input::IsKeepKeyDown(KEY_INPUT_D))
-	{
-		direction = Math2D::RIGHT;
+		direction = Math2D::Normalize(stick);
 		velocity = direction * SPEED;
 	}
 
@@ -73,8 +58,8 @@ void Player::LoadParam()
 		{
 			if (key == "MAX_HP")			{ ss >> MAX_HP; }
 			else if (key == "SPEED")		{ ss >> SPEED; }
-			else if (key == "SPAWN_POS_1")  { ss >> SPAWN_POS_1.x >> SPAWN_POS_1.y; }
-			else if (key == "SPAWN_POS_2")  { ss >> SPAWN_POS_2.x >> SPAWN_POS_2.y; }
+			else if (key == "SPAWN_POS_1")  { ss >> SPAWN_POS[0].x >> SPAWN_POS[0].y; }
+			else if (key == "SPAWN_POS_2")  { ss >> SPAWN_POS[1].x >> SPAWN_POS[1].y; }
 			else if (key == "RADIUS")			{ ss >> RADIUS; }
 		}
 	);
