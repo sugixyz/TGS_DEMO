@@ -148,9 +148,11 @@
     <ClCompile Include="Script\Engine\Tool\ParamLoader.cpp" />
     <ClCompile Include="Script\SourceCode\AiDirector.cpp" />
     <ClCompile Include="Script\SourceCode\Base.cpp" />
+    <ClCompile Include="Script\SourceCode\CraftTable.cpp" />
     <ClCompile Include="Script\SourceCode\MaterialWarehouse.cpp" />
     <ClCompile Include="Script\SourceCode\Player.cpp" />
     <ClCompile Include="Script\SourceCode\StageObject.cpp" />
+    <ClCompile Include="Script\SourceCode\Table.cpp" />
     <ClCompile Include="Script\SourceCode\Ui.cpp" />
     <ClCompile Include="Script\theMain.cpp" />
   </ItemGroup>
@@ -181,11 +183,13 @@
     <ClInclude Include="Script\Engine\Tool\Time.h" />
     <ClInclude Include="Script\SourceCode\AiDirector.h" />
     <ClInclude Include="Script\SourceCode\Base.h" />
+    <ClInclude Include="Script\SourceCode\CraftTable.h" />
     <ClInclude Include="Script\SourceCode\Gimmick.h" />
     <ClInclude Include="Script\SourceCode\Item.h" />
     <ClInclude Include="Script\SourceCode\MaterialWarehouse.h" />
     <ClInclude Include="Script\SourceCode\Player.h" />
     <ClInclude Include="Script\SourceCode\StageObject.h" />
+    <ClInclude Include="Script\SourceCode\Table.h" />
     <ClInclude Include="Script\SourceCode\Ui.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

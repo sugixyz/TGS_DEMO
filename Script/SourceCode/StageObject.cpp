@@ -24,6 +24,6 @@ void StageObject::Draw()
 	{
 		float x = position3.x;
 		float y = position3.y;
-		DrawBox(x, y, x + WIN_WIDTH, y + WIN_HEIGHT / 2, COL_GRAY, TRUE);
+		DrawBox(x, y, x + WIN_WIDTH, y + WIN_HEIGHT / 2 +36, COL_GRAY, TRUE);
 	}
 }

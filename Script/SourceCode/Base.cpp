@@ -4,7 +4,7 @@
 Base::Base(Vector2 pos, int blockSize)
 	:GameObject(Tag::STAGE)
 {
-	position = pos + Vector2(blockSize / 2, blockSize / 2);
+	position = pos;
 
 	uint32_t mask = (uint32_t)Layer::PLAYER;
 	SetCenterBox(blockSize / 2, Layer::STAGE, mask);

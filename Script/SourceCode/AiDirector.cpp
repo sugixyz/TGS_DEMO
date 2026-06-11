@@ -3,6 +3,8 @@
 #include"StageObject.h"
 #include"Base.h"
 #include"MaterialWarehouse.h"
+#include"CraftTable.h"
+#include"Table.h"
 #include"../Engine/Tool/ParamLoader.h"
 #include"../Engine/Tool/CsvReader.h"
 
@@ -102,14 +104,15 @@ void AiDirector::CreateBase()
 	for (int y = 0; y < map.size(); y++) {
 		for (int x = 0; x < map[y].size(); x++) {
 			Vector2 pos = Vector2(x, y) * BASE_BLOCK;
+			pos += Vector2(BASE_BLOCK / 2, BASE_BLOCK / 2);
 			pos.y += BASE_OFFSET_Y;
 			if (map[y][x] != -1)new Base(pos, BASE_BLOCK);
-			if (map[y][x] == 2 || map[y][x] == 3)
+			if (map[y][x] == 1 || map[y][x] == 2)
 			{
-				new MaterialWarehouse(pos, BASE_BLOCK, map[y][x]);
+				new MaterialWarehouse(pos, map[y][x]);
 			}
-			else if (map[y][x] == 4)continue;
-			else if (map[y][x] == 5)continue;
+			else if (map[y][x] == 3)new CraftTable(pos);
+			else if (map[y][x] == 4)new Table(pos);
 		}
 	}
 }

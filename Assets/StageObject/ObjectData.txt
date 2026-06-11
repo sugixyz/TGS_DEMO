@@ -3,7 +3,7 @@ OBJ_NUM = 3
 //拠点のCSV毎のサイズ
 BASE_BLOCK = 64
 //拠点のY位置のずれ
-BASE_OFFSET_Y = 540;
+BASE_OFFSET_Y = 504;
 
 //ID 1：地面　2：ベース（拠点）
 //地面のパラメータ
@@ -14,13 +14,13 @@ SCA = 1 1 1
 
 //拠点のパラメータ
 ID = 2
-POS = 0 540 0
+POS = 0 504 0
 ROT = 0 0 0
 SCA = 1 1 1
 
 //CSVの横
 X_SIZE = 30
 //CSVの縦
-Y_SIZE = 16
+Y_SIZE = 9
 
 //CSV番号　1：拠点　2：素材１倉庫　3：素材２倉庫　4：クラフト台　5：机

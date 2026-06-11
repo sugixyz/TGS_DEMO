@@ -97,6 +97,10 @@
     <ClCompile Include="Script\SourceCode\MaterialWarehouse.cpp">
       <Filter>Gimmick</Filter>
     </ClCompile>
+    <ClCompile Include="Script\SourceCode\CraftTable.cpp">
+      <Filter>Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\SourceCode\Table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Engine\Tool\CsvReader.h">
@@ -193,6 +197,12 @@
       <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="Script\SourceCode\MaterialWarehouse.h">
+      <Filter>Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\CraftTable.h">
+      <Filter>Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Table.h">
       <Filter>Gimmick</Filter>
     </ClInclude>
   </ItemGroup>
