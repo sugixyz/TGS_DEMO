@@ -128,6 +128,29 @@ public:
 	}
 
 	/// <summary>
+	/// ポジションを中心とした円コライダーのセット
+	/// </summary>
+	/// <param name="rad">半径</param>
+	/// <param name="layer">自分を識別するレイヤー</param>
+	/// <param name="mask">当たりたい対象のマスク（デフォルトなし）</param>
+	void SetCenterCircle(float rad,Layer layer, uint32_t mask = 0x00000000)
+	{
+		myCollider.SetCapsule(Vector2(0, 0), Vector2(0, 0), rad, layer, mask);
+	}
+	/// <summary>
+	/// ポジションを中心としたボックスコライダーのセット
+	/// </summary>
+	/// <param name="rad">半径</param>
+	/// <param name="layer">自分を識別するレイヤー</param>
+	/// <param name="mask">当たりたい対象のマスク（デフォルトなし）
+	void SetCenterBox(float rad,Layer layer, uint32_t mask = 0x00000000)
+	{
+		Vector2 p1 = Vector2((float)-rad, (float)-rad);
+		Vector2 p2 = Vector2((float)rad, (float)rad);
+		myCollider.SetBox(p1, p2, layer, mask);
+	}
+
+	/// <summary>
 	/// 接触時の処理
 	/// </summary>
 	/// <param name="">接触した相手のポインタ</param>

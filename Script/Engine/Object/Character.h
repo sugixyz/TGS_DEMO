@@ -38,7 +38,7 @@ public:
 	/// <param name="mask">当たりたい対象のマスク（デフォルトなし）</param>
 	void SetCenterCircle(Layer layer, uint32_t mask = 0x00000000)
 	{
-		myCollider.SetCapsule(Vector2(0, 0), Vector2(0, 0), radius, layer, mask);
+		GameObject::SetCenterCircle(radius, layer, mask);
 	}
 
 	/// <summary>
@@ -48,9 +48,7 @@ public:
 	/// <param name="mask">当たりたい対象のマスク（デフォルトなし）</param>
 	void SetCenterBox(Layer layer, uint32_t mask = 0x00000000)
 	{
-		Vector2 p1 = Vector2((float)-radius, (float)-radius);
-		Vector2 p2 = Vector2((float)radius, (float)radius);
-		myCollider.SetBox(p1, p2, layer, mask);
+		GameObject::SetCenterBox(radius, layer, mask);
 	}
 
 	/// <summary>
