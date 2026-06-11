@@ -100,20 +100,15 @@ void AiDirector::CreateBase()
 
 	for (int y = 0; y < map.size(); y++) {
 		for (int x = 0; x < map[y].size(); x++) {
-			if (map[y][x] == 1)
+			if (map[y][x] != 0)
 			{
 				Vector2 pos = Vector2(x, y) * BASE_BLOCK;
 				pos.y += BASE_OFFSET_Y;
 				new Base(pos, BASE_BLOCK);
 			}
-			else if (map[y][x] == 2)continue;
+			if (map[y][x] == 2)continue;
 			else if (map[y][x] == 3)continue;
 			else if (map[y][x] == 4)continue;
 		}
 	}
 }
-
-//ToDo :パラメーターローダー追加
-//オブジェクトの数を取得
-//オブジェクトの数分繰り返し
-//取得したポジション、回転、スケールと、for分の値を引数にオブジェクトを生成

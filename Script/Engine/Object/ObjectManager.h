@@ -13,6 +13,7 @@ enum class Tag
 {
 	SYSTEM,
 	STAGE,
+	GIMMICK,
 	PLAYER,
 	ENEMY,
 	ATTACK,

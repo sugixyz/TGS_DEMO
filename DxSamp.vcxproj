@@ -180,6 +180,7 @@
     <ClInclude Include="Script\Engine\Tool\Time.h" />
     <ClInclude Include="Script\SourceCode\AiDirector.h" />
     <ClInclude Include="Script\SourceCode\Base.h" />
+    <ClInclude Include="Script\SourceCode\Gimmick.h" />
     <ClInclude Include="Script\SourceCode\Player.h" />
     <ClInclude Include="Script\SourceCode\StageObject.h" />
     <ClInclude Include="Script\SourceCode\Ui.h" />
