@@ -16,5 +16,5 @@ void Table::Draw()
 	DrawBox(x, y, x + 64, y + 64, COL_MAGENTA, TRUE);
 }
 
-void Table::Interact()
+void Table::Interact(Item* item)
 {}

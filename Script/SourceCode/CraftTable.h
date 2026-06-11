@@ -7,5 +7,5 @@ public:
 	CraftTable(Vector2 pos);
 	~CraftTable();
 	void Draw() override;
-	void Interact() override;
+	void Interact(Item* item) override;
 };

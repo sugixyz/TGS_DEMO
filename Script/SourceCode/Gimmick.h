@@ -10,7 +10,7 @@ public:
 		:GameObject(tag)
 	{}
 	~Gimmick() {}
-	virtual void Interact() {}
+	virtual void Interact(Item* item) {}
 protected:
 	Item* hasItem = nullptr;
 };

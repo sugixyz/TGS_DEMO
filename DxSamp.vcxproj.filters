@@ -193,9 +193,6 @@
     <ClInclude Include="Script\Engine\Tool\Math3D.h">
       <Filter>Engine\Tool</Filter>
     </ClInclude>
-    <ClInclude Include="Script\SourceCode\Item.h">
-      <Filter>Item</Filter>
-    </ClInclude>
     <ClInclude Include="Script\SourceCode\MaterialWarehouse.h">
       <Filter>Gimmick</Filter>
     </ClInclude>
@@ -204,6 +201,9 @@
     </ClInclude>
     <ClInclude Include="Script\SourceCode\Table.h">
       <Filter>Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Item.h">
+      <Filter>Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

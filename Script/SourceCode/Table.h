@@ -7,5 +7,5 @@ public:
 	Table(Vector2 pos);
 	~Table();
 	void Draw() override;
-	void Interact() override;
+	void Interact(Item* item) override;
 };

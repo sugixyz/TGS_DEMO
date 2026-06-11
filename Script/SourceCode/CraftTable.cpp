@@ -16,5 +16,5 @@ void CraftTable::Draw()
 	DrawBox(x, y, x + 64, y + 64, COL_CYAN, TRUE);
 }
 
-void CraftTable::Interact()
+void CraftTable::Interact(Item* item)
 {}

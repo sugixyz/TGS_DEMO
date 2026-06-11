@@ -7,7 +7,7 @@ public:
 	MaterialWarehouse(Vector2 pos,int id);
 	~MaterialWarehouse();
 	void Draw() override;
-	void Interact() override;
+	void Interact(Item* item) override;
 private:
 	int materialId;
 };

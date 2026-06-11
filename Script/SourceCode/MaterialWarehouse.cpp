@@ -20,5 +20,5 @@ void MaterialWarehouse::Draw()
 	DrawBox(x, y, x + 64, y + 64, col, TRUE);
 }
 
-void MaterialWarehouse::Interact()
+void MaterialWarehouse::Interact(Item* item)
 {}
