@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"StageObject.h"
 #include"Base.h"
+#include"MaterialWarehouse.h"
 #include"../Engine/Tool/ParamLoader.h"
 #include"../Engine/Tool/CsvReader.h"
 
@@ -100,15 +101,15 @@ void AiDirector::CreateBase()
 
 	for (int y = 0; y < map.size(); y++) {
 		for (int x = 0; x < map[y].size(); x++) {
-			if (map[y][x] != 0)
+			Vector2 pos = Vector2(x, y) * BASE_BLOCK;
+			pos.y += BASE_OFFSET_Y;
+			if (map[y][x] != -1)new Base(pos, BASE_BLOCK);
+			if (map[y][x] == 2 || map[y][x] == 3)
 			{
-				Vector2 pos = Vector2(x, y) * BASE_BLOCK;
-				pos.y += BASE_OFFSET_Y;
-				new Base(pos, BASE_BLOCK);
+				new MaterialWarehouse(pos, BASE_BLOCK, map[y][x]);
 			}
-			if (map[y][x] == 2)continue;
-			else if (map[y][x] == 3)continue;
 			else if (map[y][x] == 4)continue;
+			else if (map[y][x] == 5)continue;
 		}
 	}
 }

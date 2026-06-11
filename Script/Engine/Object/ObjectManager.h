@@ -16,6 +16,7 @@ enum class Tag
 	GIMMICK,
 	PLAYER,
 	ENEMY,
+	ITEM,
 	ATTACK,
 	UI,
 	SIZE
