@@ -149,6 +149,7 @@
     <ClCompile Include="Script\SourceCode\AiDirector.cpp" />
     <ClCompile Include="Script\SourceCode\Base.cpp" />
     <ClCompile Include="Script\SourceCode\CraftTable.cpp" />
+    <ClCompile Include="Script\SourceCode\Material.cpp" />
     <ClCompile Include="Script\SourceCode\MaterialWarehouse.cpp" />
     <ClCompile Include="Script\SourceCode\Player.cpp" />
     <ClCompile Include="Script\SourceCode\StageObject.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Script\SourceCode\CraftTable.h" />
     <ClInclude Include="Script\SourceCode\Gimmick.h" />
     <ClInclude Include="Script\SourceCode\Item.h" />
+    <ClInclude Include="Script\SourceCode\Material.h" />
     <ClInclude Include="Script\SourceCode\MaterialWarehouse.h" />
     <ClInclude Include="Script\SourceCode\Player.h" />
     <ClInclude Include="Script\SourceCode\StageObject.h" />
