@@ -1,5 +1,7 @@
 ﻿#include "Player.h"
 #include"../Engine/Tool/ParamLoader.h"
+#include"Item.h"
+#include"Gimmick.h"
 
 int Player::MAX_HP;
 float Player::SPEED;
@@ -118,4 +120,18 @@ void Player::CollisionWall(GameObject* wall)
 			this->position.y += overlapY;
 		}
 	}
+}
+
+void Player::CollisionGimmick(GameObject* other)
+{
+
+}
+
+void Player::Interact()
+{
+	//もし適応可能なギミックがなければスルー
+	if (interactionGimmick == nullptr)return;
+
+	Gimmick* g = dynamic_cast<Gimmick*>(interactionGimmick);
+	g->Interact(hasItem);
 }

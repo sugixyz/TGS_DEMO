@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include"../Engine/Object/Character.h"
 
+class Item;
+
 class Player : public Character
 {
 public:
@@ -13,9 +15,16 @@ public:
 	static void LoadParam();
 private:
 	int hp;
+	//１Pか２Pか
 	int id;
+	//持っているアイテム
+	Item* hasItem = nullptr;
+	//インタラクト可能なギミック
+	GameObject* interactionGimmick = nullptr;
 private:
 	void CollisionWall(GameObject* other);
+	void CollisionGimmick(GameObject* other);
+	void Interact();
 private:
 	static int MAX_HP;
 	static float SPEED;
