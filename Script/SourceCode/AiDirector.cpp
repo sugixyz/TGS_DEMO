@@ -30,7 +30,7 @@ void AiDirector::LoadParam()
 
 void AiDirector::CreateStageObject()
 {
-	char path[50] = "Assets/StageObject/ObjectData.txt";
+	char path[50] = "Assets/ParamText/ObjectData.txt";
 	std::ifstream file(path);
 	//ファイルがなければスルー
 	if (!file.is_open())return;

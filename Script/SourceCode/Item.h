@@ -33,7 +33,7 @@ public:
 	/// <summary>
 	/// 武器用の仮想関数（外部からアタックにアクセスするため）
 	/// </summary>
-	virtual void Attack();
+	virtual void Attack() {}
 protected:
 	//このアイテムが武器かどうか
 	bool isWeapon;

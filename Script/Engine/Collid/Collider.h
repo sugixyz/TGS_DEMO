@@ -8,7 +8,8 @@ enum class Layer : uint32_t
 	NONE = 0,
 	PLAYER = 1 << 0,
 	ENEMY = 1 << 1,
-	STAGE = 1 << 2
+	STAGE = 1 << 2,
+	GIMMICK = 1 << 3
 };
 
 //コライダーの構造体

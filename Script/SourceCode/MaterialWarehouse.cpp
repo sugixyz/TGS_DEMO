@@ -5,6 +5,9 @@ MaterialWarehouse::MaterialWarehouse(Vector2 pos,int id)
 {
 	position = pos;
 	materialId = id;
+
+	uint32_t mask = (uint32_t)Layer::PLAYER;
+	SetCenterCircle(INTERACT_LENGHT, Layer::GIMMICK, mask);
 }
 
 MaterialWarehouse::~MaterialWarehouse()

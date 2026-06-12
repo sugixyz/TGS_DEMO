@@ -4,6 +4,9 @@ CraftTable::CraftTable(Vector2 pos)
 	:Gimmick(Tag::GIMMICK)
 {
 	position = pos;
+
+	uint32_t mask = (uint32_t)Layer::PLAYER;
+	SetCenterCircle(INTERACT_LENGHT, Layer::GIMMICK, mask);
 }
 
 CraftTable::~CraftTable()
