@@ -1,4 +1,4 @@
-#include "Material.h"
+﻿#include "Material.h"
 
 Material::Material(int id)
 	:Item(Tag::ITEM)
@@ -16,5 +16,9 @@ void Material::Draw()
 	float x = position.x;
 	float y = position.y;
 
-	DrawCircle(x, y, 10, COL_WHITE, TRUE);
+	unsigned int col = COL_WHITE;
+	if (type & ItemType::MATERIAL1)col = COL_CYAN;
+	else if (type & ItemType::MATERIAL2)col = COL_RED;
+
+	DrawCircle(x, y, 10, col, TRUE);
 }

@@ -17,7 +17,7 @@ Player::Player(int index)
 	radius = RADIUS;
 	direction = Math2D::UP;
 
-	uint32_t mask = (uint32_t)Layer::STAGE;
+	uint32_t mask = (uint32_t)Layer::STAGE | (uint32_t)Layer::GIMMICK;
 	SetCenterCircle(Layer::PLAYER, mask);
 }
 
@@ -27,6 +27,8 @@ Player::~Player()
 void Player::Update()
 {
 	Move();
+	Interact();
+
 }
 
 void Player::Draw()
@@ -57,6 +59,11 @@ void Player::Move()
 	}
 
 	position += velocity;
+
+	if (hasItem != nullptr)
+	{
+		hasItem->SetPos(Vector2(position + direction * 20));
+	}
 }
 
 void Player::OnCollision(GameObject * other)
@@ -64,6 +71,10 @@ void Player::OnCollision(GameObject * other)
 	if (other->GetTag() == Tag::STAGE)
 	{
 		CollisionWall(other);
+	}
+	if (other->GetTag() == Tag::GIMMICK)
+	{
+		CollisionGimmick(other);
 	}
 }
 
@@ -124,14 +135,28 @@ void Player::CollisionWall(GameObject* wall)
 
 void Player::CollisionGimmick(GameObject* other)
 {
+	if (interactionGimmick == nullptr)
+	{
+		interactionGimmick = other;
+		return;
+	}
 
+	float iLenghtSq = Math2D::LengthSq(position - interactionGimmick->GetPos());
+	float gLenghtSq = Math2D::LengthSq(position - other->GetPos());
+
+	if (iLenghtSq > gLenghtSq)interactionGimmick = other;
 }
 
 void Player::Interact()
 {
-	//もし適応可能なギミックがなければスルー
-	if (interactionGimmick == nullptr)return;
+	if (Input::IsPadDown(Pad::A, id))
+	{
+		//もし適応可能なギミックがなければスルー
+		if (interactionGimmick == nullptr)return;
 
-	Gimmick* g = dynamic_cast<Gimmick*>(interactionGimmick);
-	g->Interact(hasItem);
+		Gimmick* g = dynamic_cast<Gimmick*>(interactionGimmick);
+		hasItem = g->Interact(hasItem);
+	}
+	//毎フレーム初期化
+	interactionGimmick = nullptr;
 }

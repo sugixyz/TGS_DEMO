@@ -1,4 +1,5 @@
 ﻿#include "CraftTable.h"
+#include"Item.h"
 
 CraftTable::CraftTable(Vector2 pos)
 	:Gimmick(Tag::GIMMICK)
@@ -19,5 +20,31 @@ void CraftTable::Draw()
 	DrawBox(x, y, x + 64, y + 64, COL_CYAN, TRUE);
 }
 
-void CraftTable::Interact(Item* item)
-{}
+Item* CraftTable::Interact(Item* item)
+{
+	//もし机にアイテムがあったら
+	if (hasItem != nullptr)
+	{
+		//プレイヤーがアイテムを持ってないなら机のアイテムを渡す
+		if (item == nullptr)
+		{
+			Item* tmp = hasItem;
+			hasItem = nullptr;
+			return tmp;
+		}
+		//プレイヤーがアイテムを持っているならそのまま返す
+		return item;
+	}
+	//もし机にアイテムがなかったら
+	else
+	{
+		//プレイヤーがアイテムを持っているならアイテムを貰う
+		if (item != nullptr)
+		{
+			hasItem = item;
+			hasItem->SetPos(Vector2(position));
+		}
+		//プレイヤーからアイテムを貰うのでnullptrを返す
+		return nullptr;
+	}
+}

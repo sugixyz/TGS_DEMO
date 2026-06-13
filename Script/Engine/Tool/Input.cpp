@@ -69,6 +69,8 @@ void Input::PadStateUpdate()
 		memcpy_s(padBuffOld[p], sizeof(char) * PAD_MAX, padBuff[p], sizeof(char) * PAD_MAX);
 
 		int inputBit = GetJoypadInputState(padId[p]);
+		GetJoypadAnalogInput(&stickX[p], &stickY[p], padId[p]);
+		AssociateKey(p,inputBit);
 
 		for (int i = 0; i < PAD_MAX; i++)
 		{
@@ -90,9 +92,7 @@ void Input::PadStateUpdate()
 			pad_up[p][i] = pad_xor & padBuffOld[p][i];	//離された瞬間 = (前フレームとkey_xorのAND) 
 		}
 
-		GetJoypadAnalogInput(&stickX[p], &stickY[p], padId[p]);
 	}
-	AssociateKey();
 }
 
 bool Input::IsPadUp(int padCode, int padId)
@@ -115,37 +115,45 @@ Vector2 Input::GetStick(int padId)
 	return CangeNumberToRate(Vector2(stickX[padId], stickY[padId]));
 }
 
-void Input::AssociateKey()
+void Input::AssociateKey(int id,int& bit)
 {
 	//パッド１
-	int id = 0;
-	//Wでパッド１のスティック上
-	if (Input::IsKeepKeyDown(KEY_INPUT_W))stickY[id] = -1000;
-	else if (Input::IsKeyUP(KEY_INPUT_W))stickY[id] = 0;
-	//Sでパッド１のスティック下
-	if (Input::IsKeepKeyDown(KEY_INPUT_S))stickY[id] = 1000;
-	else if (Input::IsKeyUP(KEY_INPUT_S))stickY[id] = 0;
-	//Aでパッド１のスティック左
-	if (Input::IsKeepKeyDown(KEY_INPUT_A))stickX[id] = -1000;
-	else if (Input::IsKeyUP(KEY_INPUT_A))stickX[id] = 0;
-	//Dでパッド１のスティック右
-	if (Input::IsKeepKeyDown(KEY_INPUT_D))stickX[id] = 1000;
-	else if (Input::IsKeyUP(KEY_INPUT_D))stickX[id] = 0;
+	if (id == 0)
+	{
+		//Wでパッド１のスティック上
+		if (Input::IsKeepKeyDown(KEY_INPUT_W))stickY[id] = -1000;
+		else if (Input::IsKeyUP(KEY_INPUT_W))stickY[id] = 0;
+		//Sでパッド１のスティック下
+		if (Input::IsKeepKeyDown(KEY_INPUT_S))stickY[id] = 1000;
+		else if (Input::IsKeyUP(KEY_INPUT_S))stickY[id] = 0;
+		//Aでパッド１のスティック左
+		if (Input::IsKeepKeyDown(KEY_INPUT_A))stickX[id] = -1000;
+		else if (Input::IsKeyUP(KEY_INPUT_A))stickX[id] = 0;
+		//Dでパッド１のスティック右
+		if (Input::IsKeepKeyDown(KEY_INPUT_D))stickX[id] = 1000;
+		else if (Input::IsKeyUP(KEY_INPUT_D))stickX[id] = 0;
+		//Fでパッド１のボタンA
+		if (Input::IsKeepKeyDown(KEY_INPUT_F))bit = bit | 1 << Pad::A;
+	}
 
 	//パッド２
-	id = 1;
-	//↑でパッド２のスティック上
-	if (Input::IsKeepKeyDown(KEY_INPUT_UP))stickY[id] = -1000;
-	else if (Input::IsKeyUP(KEY_INPUT_UP))stickY[id] = 0;
-	//↓でパッド２のスティック下
-	if (Input::IsKeepKeyDown(KEY_INPUT_DOWN))stickY[id] = 1000;
-	else if (Input::IsKeyUP(KEY_INPUT_DOWN))stickY[id] = 0;
-	//←でパッド２のスティック左
-	if (Input::IsKeepKeyDown(KEY_INPUT_LEFT))stickX[id] = -1000;
-	else if (Input::IsKeyUP(KEY_INPUT_LEFT))stickX[id] = 0;
-	//→でパッド２のスティック右
-	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))stickX[id] = 1000;
-	else if (Input::IsKeyUP(KEY_INPUT_RIGHT))stickX[id] = 0;
+	if (id == 1)
+	{
+		//↑でパッド２のスティック上
+		if (Input::IsKeepKeyDown(KEY_INPUT_UP))stickY[id] = -1000;
+		else if (Input::IsKeyUP(KEY_INPUT_UP))stickY[id] = 0;
+		//↓でパッド２のスティック下
+		if (Input::IsKeepKeyDown(KEY_INPUT_DOWN))stickY[id] = 1000;
+		else if (Input::IsKeyUP(KEY_INPUT_DOWN))stickY[id] = 0;
+		//←でパッド２のスティック左
+		if (Input::IsKeepKeyDown(KEY_INPUT_LEFT))stickX[id] = -1000;
+		else if (Input::IsKeyUP(KEY_INPUT_LEFT))stickX[id] = 0;
+		//→でパッド２のスティック右
+		if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT))stickX[id] = 1000;
+		else if (Input::IsKeyUP(KEY_INPUT_RIGHT))stickX[id] = 0;
+		//右ctrでパッド２のボタンA
+		if (Input::IsKeepKeyDown(KEY_INPUT_RCONTROL))bit = bit | 1 << Pad::A;
+	}
 }
 
 Vector2 Input::CangeNumberToRate(Vector2 n)

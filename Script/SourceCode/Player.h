@@ -22,7 +22,9 @@ private:
 	//インタラクト可能なギミック
 	GameObject* interactionGimmick = nullptr;
 private:
+	//壁と接触したときの処理
 	void CollisionWall(GameObject* other);
+	//ギミックと接触したときの処理
 	void CollisionGimmick(GameObject* other);
 	void Interact();
 private:

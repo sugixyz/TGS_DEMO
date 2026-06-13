@@ -66,9 +66,11 @@ namespace Input {
 	Vector2 GetStick(int padId);
 
 	/// <summary>
-	/// キー入力をパッド入力に対応づける
+	/// キーボードをパッド入力に適応する
 	/// </summary>
-	void AssociateKey();
+	/// <param name="id">パッドの種類</param>
+	/// <param name="bit">入力のビット数値</param>
+	void AssociateKey(int id,int& bit);
 
 	Vector2 CangeNumberToRate(Vector2 n);
 }
