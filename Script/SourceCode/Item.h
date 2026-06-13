@@ -9,7 +9,9 @@ enum ItemType : uint32_t
 	WEAPON1 = 1 << 3,
 	WEAPON2 = 1 << 4,
 	WEAPON3 = 1 << 5,
-
+	ENHANCED_WEAPON1 = 1 << 6,
+	ENHANCED_WEAPON2 = 1 << 7,
+	ENHANCED_WEAPON3 = 1 << 8
 };
 
 class Item : public GameObject
@@ -29,7 +31,7 @@ public:
 	/// アイテムのタイプを取得
 	/// </summary>
 	/// <returns>アイテムのタイプを返す</returns>
-	ItemType GetItemType() { type; }
+	ItemType GetItemType() { return type; }
 	/// <summary>
 	/// 武器用の仮想関数（外部からアタックにアクセスするため）
 	/// </summary>

@@ -17,7 +17,7 @@ void Material::Draw()
 	float y = position.y;
 
 	unsigned int col = COL_WHITE;
-	if (type & ItemType::MATERIAL1)col = COL_CYAN;
+	if (type & ItemType::MATERIAL1)col = COL_BLACK;
 	else if (type & ItemType::MATERIAL2)col = COL_RED;
 
 	DrawCircle(x, y, 10, col, TRUE);

@@ -1,5 +1,6 @@
 ﻿#include "CraftTable.h"
 #include"Item.h"
+#include"Material.h"
 
 CraftTable::CraftTable(Vector2 pos)
 	:Gimmick(Tag::GIMMICK)
@@ -22,20 +23,32 @@ void CraftTable::Draw()
 
 Item* CraftTable::Interact(Item* item)
 {
-	//もし机にアイテムがあったら
+	//もし台にアイテムがあったら
 	if (hasItem != nullptr)
 	{
-		//プレイヤーがアイテムを持ってないなら机のアイテムを渡す
+		//プレイヤーがアイテムを持ってないなら台のアイテムを渡す
 		if (item == nullptr)
 		{
 			Item* tmp = hasItem;
 			hasItem = nullptr;
 			return tmp;
 		}
-		//プレイヤーがアイテムを持っているならそのまま返す
+
+		//クラフト
+		Item* craft = Craft(item);
+		//もしクラフトに成功していればクラフト結果を台に、プレイヤーにnullptrを返す
+		if (craft != nullptr)
+		{
+			hasItem->DestroyMe();
+			item->DestroyMe();
+			hasItem = craft;
+			hasItem->SetPos(Vector2(position));
+			return nullptr;
+		}
+		//クラフトに失敗していればそのまま返す
 		return item;
 	}
-	//もし机にアイテムがなかったら
+	//もし台にアイテムがなかったら
 	else
 	{
 		//プレイヤーがアイテムを持っているならアイテムを貰う
@@ -47,4 +60,19 @@ Item* CraftTable::Interact(Item* item)
 		//プレイヤーからアイテムを貰うのでnullptrを返す
 		return nullptr;
 	}
+}
+
+Item* CraftTable::Craft(Item* a)
+{
+	uint32_t craftKey = a->GetItemType() | hasItem->GetItemType();
+
+	//クラフトレシピ
+	if		(craftKey == (ItemType::MATERIAL1 | ItemType::MATERIAL2))return new Material(1);
+	else if (craftKey == (ItemType::MATERIAL1 | ItemType::MATERIAL1))return nullptr;
+	else if (craftKey == (ItemType::MATERIAL2 | ItemType::MATERIAL2))return nullptr;
+	else if (craftKey == (ItemType::WEAPON1 | ItemType::MATERIAL_ENEMY))return nullptr;
+	else if (craftKey == (ItemType::WEAPON2 | ItemType::MATERIAL_ENEMY))return nullptr;
+	else if (craftKey == (ItemType::WEAPON3 | ItemType::MATERIAL_ENEMY))return nullptr;
+
+	return nullptr;
 }
