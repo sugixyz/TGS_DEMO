@@ -8,9 +8,6 @@
 #include"../Engine/Tool/ParamLoader.h"
 #include"../Engine/Tool/CsvReader.h"
 
-int AiDirector::BASE_BLOCK;
-int AiDirector::BASE_OFFSET_Y;
-
 AiDirector::AiDirector()
 	:GameObject(Tag::SYSTEM)
 {
@@ -62,6 +59,8 @@ void AiDirector::CreateStageObject()
 	//オブジェクトの数分ループ
 	for (int i = 0; i < objNum; i++)
 	{
+		if (file.eof())break;
+
 		while (std::getline(file, line))
 		{
 			//もし空行か、コメントだったらスルー

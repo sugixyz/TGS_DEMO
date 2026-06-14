@@ -79,20 +79,6 @@ void Player::OnCollision(GameObject * other)
 	}
 }
 
-void Player::LoadParam()
-{
-	char path[50] = "Assets/ParamText/Player.txt";
-	Loader::SetParam(path, [](const std::string& key, std::stringstream& ss)
-		{
-			if (key == "MAX_HP")			{ ss >> MAX_HP; }
-			else if (key == "SPEED")		{ ss >> SPEED; }
-			else if (key == "SPAWN_POS_1")  { ss >> SPAWN_POS[0].x >> SPAWN_POS[0].y; }
-			else if (key == "SPAWN_POS_2")  { ss >> SPAWN_POS[1].x >> SPAWN_POS[1].y; }
-			else if (key == "RADIUS")			{ ss >> RADIUS; }
-		}
-	);
-}
-
 void Player::CollisionWall(GameObject* wall)
 {
 	Collider wallCol = wall->GetCollider();

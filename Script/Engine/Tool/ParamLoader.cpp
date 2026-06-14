@@ -1,29 +1,47 @@
 ﻿#include "ParamLoader.h"
 #include"../../SourceCode/Player.h"
+#include"../../SourceCode/Gimmick.h"
 
 void Loader::AllClassParamLoad()
 {
-	Player::LoadParam();
-}
-
-void Loader::SetParam(const char* path, std::function<void(const std::string& key, std::stringstream& ss)> func)
-{
+	std::string path = "Assets/Param.txt";
 	std::ifstream file(path);
 	//ファイルがなければスルー
 	if (!file.is_open())return;
 
 	std::string line;
+	//どのセクションのデータを呼んでいるか
+	std::string currentSection = "";
+
 	while (std::getline(file, line))
 	{
 		//もし空行か、コメントだったらスルー
 		if (line.empty() || line.rfind("//", 0) == 0)continue;
 
+		//セクションの変更
+		if (line.front() == '[' && line.back() == ']')
+		{
+			//[]を削除したものを現在のセクションとして保存
+			currentSection = line.substr(1, line.size() - 2);
+			continue;
+		}
+
 		std::stringstream ss(line);
 		std::string key, eq;
 		if (ss >> key >> eq)
 		{
-			//クラスの独自のものを呼ぶ
-			func(key, ss);
+			if (currentSection == "Player")
+			{
+				if (key == "MAX_HP") { ss >> Player::MAX_HP; }
+				else if (key == "SPEED") { ss >> Player::SPEED; }
+				else if (key == "SPAWN_POS_1") { ss >> Player::SPAWN_POS[0].x >> Player::SPAWN_POS[0].y; }
+				else if (key == "SPAWN_POS_2") { ss >> Player::SPAWN_POS[1].x >> Player::SPAWN_POS[1].y; }
+				else if (key == "RADIUS") { ss >> Player::RADIUS; }
+			}
+			else if (currentSection == "Gimmick")
+			{
+				if (key == "INTERACT_LENGHT") { ss >> Gimmick::INTERACT_LENGHT; }
+			}
 		}
 	}
 }

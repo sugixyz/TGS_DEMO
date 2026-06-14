@@ -12,7 +12,6 @@ public:
 	void Draw() override;
 	void Move() override;
 	void OnCollision(GameObject* other) override;
-	static void LoadParam();
 private:
 	int hp;
 	//１Pか２Pか
@@ -30,7 +29,7 @@ private:
 	void Interact();
 	//攻撃（攻撃中ならtrueを返す）
 	bool Attack();
-private:
+public:
 	static int MAX_HP;
 	static float SPEED;
 	static Vector2 SPAWN_POS[2];

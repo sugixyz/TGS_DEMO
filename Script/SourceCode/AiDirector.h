@@ -13,6 +13,6 @@ private:
 	//拠点の当たり判定の生成
 	void CreateBase();
 private:
-	static int BASE_BLOCK;
-	static int BASE_OFFSET_Y;
+	int BASE_BLOCK;
+	int BASE_OFFSET_Y;
 };
