@@ -26,7 +26,10 @@ private:
 	void CollisionWall(GameObject* other);
 	//ギミックと接触したときの処理
 	void CollisionGimmick(GameObject* other);
+	//ギミックのインタラクト
 	void Interact();
+	//攻撃（攻撃中ならtrueを返す）
+	bool Attack();
 private:
 	static int MAX_HP;
 	static float SPEED;

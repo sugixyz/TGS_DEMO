@@ -20,4 +20,5 @@ void Weapon1::Draw()
 }
 
 void Weapon1::Attack()
-{}
+{
+}

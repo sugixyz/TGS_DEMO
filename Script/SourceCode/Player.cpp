@@ -1,6 +1,6 @@
 ﻿#include "Player.h"
 #include"../Engine/Tool/ParamLoader.h"
-#include"Item.h"
+#include"Weapon.h"
 #include"Gimmick.h"
 
 int Player::MAX_HP;
@@ -26,6 +26,7 @@ Player::~Player()
 
 void Player::Update()
 {
+	if (Attack())return;
 	Move();
 	Interact();
 
@@ -159,4 +160,21 @@ void Player::Interact()
 	}
 	//毎フレーム初期化
 	interactionGimmick = nullptr;
+}
+
+bool Player::Attack()
+{
+	//RBを押しているなら攻撃できるかチェック
+	if (Input::IsKeepPadDown(Pad::RB, id))
+	{
+		Weapon* wpn = dynamic_cast<Weapon*>(hasItem);
+
+		//もし持っているアイテムが武器なら攻撃
+		if (wpn != nullptr)
+		{
+			wpn->Attack();
+			return true;
+		}
+	}
+	return false;
 }
