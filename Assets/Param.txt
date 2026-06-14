@@ -18,3 +18,14 @@ RADIUS = 24
 
 //インタラクト可能な範囲（半径）
 INTERACT_LENGHT = 60
+
+
+//武器１のパラメータ
+[Weapon1]
+
+//武器の耐久値
+LIFE = 1
+//攻撃の長さ
+ATTACK_LENGHT = 640
+//攻撃の半径
+ATTACK_RADIUS = 20

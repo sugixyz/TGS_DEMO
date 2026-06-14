@@ -12,6 +12,19 @@ public:
 	void Draw() override;
 	void Move() override;
 	void OnCollision(GameObject* other) override;
+	/// <summary>
+	/// プレイヤーのIDを取得する関数
+	/// </summary>
+	/// <returns>1Pなら0、2Pなら1</returns>
+	int GetId() { return id; }
+	/// <summary>
+	/// 所持しているアイテムに座標を適応する
+	/// </summary>
+	void ItemMove();
+	/// <summary>
+	/// 持っている武器が壊れた
+	/// </summary>
+	void BrokenHasWeapon();
 private:
 	int hp;
 	//１Pか２Pか

@@ -29,7 +29,6 @@ void Player::Update()
 	if (Attack())return;
 	Move();
 	Interact();
-
 }
 
 void Player::Draw()
@@ -60,11 +59,7 @@ void Player::Move()
 	}
 
 	position += velocity;
-
-	if (hasItem != nullptr)
-	{
-		hasItem->SetPos(Vector2(position + direction * 20));
-	}
+	ItemMove();
 }
 
 void Player::OnCollision(GameObject * other)
@@ -77,6 +72,20 @@ void Player::OnCollision(GameObject * other)
 	{
 		CollisionGimmick(other);
 	}
+}
+
+void Player::ItemMove()
+{
+	if (hasItem != nullptr)
+	{
+		hasItem->SetPos(Vector2(position + direction * 20));
+	}
+}
+
+void Player::BrokenHasWeapon()
+{
+	hasItem->DestroyMe();
+	hasItem = nullptr;
 }
 
 void Player::CollisionWall(GameObject* wall)
@@ -150,17 +159,20 @@ void Player::Interact()
 
 bool Player::Attack()
 {
-	//RBを押しているなら攻撃できるかチェック
+	//何も持っていないならスルー
+	if (hasItem == nullptr)return false;
+
+	Weapon* wpn = dynamic_cast<Weapon*>(hasItem);
+	//もし持っているアイテムが武器じゃないならスルー
+	if (wpn == nullptr)return false;
+
+	//RBを押していれば攻撃
 	if (Input::IsKeepPadDown(Pad::RB, id))
 	{
-		Weapon* wpn = dynamic_cast<Weapon*>(hasItem);
-
-		//もし持っているアイテムが武器なら攻撃
-		if (wpn != nullptr)
-		{
-			wpn->Attack();
-			return true;
-		}
+		wpn->Attack(this);
+		wpn->IsAttack(true);
+		return true;
 	}
+	wpn->IsAttack(false);
 	return false;
 }

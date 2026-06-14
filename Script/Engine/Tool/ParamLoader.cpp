@@ -1,6 +1,7 @@
 ﻿#include "ParamLoader.h"
 #include"../../SourceCode/Player.h"
 #include"../../SourceCode/Gimmick.h"
+#include"../../SourceCode/Weapon1.h"
 
 void Loader::AllClassParamLoad()
 {
@@ -41,6 +42,12 @@ void Loader::AllClassParamLoad()
 			else if (currentSection == "Gimmick")
 			{
 				if (key == "INTERACT_LENGHT") { ss >> Gimmick::INTERACT_LENGHT; }
+			}
+			else if (currentSection == "Weapon1")
+			{
+				if (key == "LIFE") { ss >> Weapon1::LIFE; }
+				else if (key == "ATTACK_LENGHT") { ss >> Weapon1::ATTACK_LENGHT; }
+				else if (key == "ATTACK_RADIUS") { ss >> Weapon1::ATTACK_RADIUS; }
 			}
 		}
 	}

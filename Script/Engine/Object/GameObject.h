@@ -169,6 +169,17 @@ public:
 	/// <returns>現在の位置</returns>
 	Vector2 GetPos() { return position; }
 
+	/// <summary>
+	/// 方向の設定
+	/// </summary>
+	/// <param name="dir">適応する方向</param>
+	void SetDir(Vector2 dir) { direction = dir; }
+	/// <summary>
+	/// 方向を取得する
+	/// </summary>
+	/// <returns>現在の方向</returns>
+	Vector2 GetDir() { return direction; }
+
 private:
 	bool destroy;
 	bool dontDestroy;
@@ -180,6 +191,8 @@ protected:
 	int hImage = -1;
 	//位置 コリジョン処理の関係でGameObjectに移動
 	Vector2 position;
+	//方向
+	Vector2 direction;
 
 	//3D描画用の変数
 	Vector3 position3;

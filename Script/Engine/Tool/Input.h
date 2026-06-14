@@ -85,8 +85,8 @@ enum Pad
 	B,
 	X,
 	Y,
-	RB,
 	LB,
+	RB,
 	VIEW,
 	OPTION
 };
