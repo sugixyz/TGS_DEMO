@@ -17,5 +17,5 @@ public:
 protected:
 	Item* hasItem = nullptr;
 protected:
-	static constexpr float INTERACT_LENGHT = 80.0f;
+	static constexpr float INTERACT_LENGHT = 60.0f;
 };

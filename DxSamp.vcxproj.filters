@@ -34,6 +34,9 @@
     <Filter Include="Item">
       <UniqueIdentifier>{cf258fa9-cf11-475e-96dc-62dc641f7b06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Item\Weapon">
+      <UniqueIdentifier>{7d4bea07-eb41-4043-b703-089ca6c65393}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Script\Engine\Tool\CsvReader.cpp">
@@ -100,7 +103,13 @@
     <ClCompile Include="Script\SourceCode\CraftTable.cpp">
       <Filter>Gimmick</Filter>
     </ClCompile>
-    <ClCompile Include="Script\SourceCode\Table.cpp" />
+    <ClCompile Include="Script\SourceCode\Material.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\SourceCode\Table.cpp">
+      <Filter>Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\SourceCode\Weapon1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Engine\Tool\CsvReader.h">
@@ -204,6 +213,15 @@
     </ClInclude>
     <ClInclude Include="Script\SourceCode\Item.h">
       <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Material.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Weapon.h">
+      <Filter>Item\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Weapon1.h">
+      <Filter>Item\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

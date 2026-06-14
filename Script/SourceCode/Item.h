@@ -21,23 +21,11 @@ public:
 		:GameObject(tag)
 	{}
 	~Item() {}
-	void Draw() override {}
-	/// <summary>
-	/// このアイテムが武器かどうか
-	/// </summary>
-	/// <returns>武器であればtrue</returns>
-	bool IsWeapon() { return isWeapon; }
 	/// <summary>
 	/// アイテムのタイプを取得
 	/// </summary>
 	/// <returns>アイテムのタイプを返す</returns>
 	ItemType GetItemType() { return type; }
-	/// <summary>
-	/// 武器用の仮想関数（外部からアタックにアクセスするため）
-	/// </summary>
-	virtual void Attack() {}
 protected:
-	//このアイテムが武器かどうか
-	bool isWeapon;
 	ItemType type;
 };
