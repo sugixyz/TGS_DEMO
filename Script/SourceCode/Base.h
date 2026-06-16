@@ -6,4 +6,5 @@ class Base : public GameObject
 public:
 	Base(Vector2 pos,int blockSize);
 	~Base();
+	void OnCollision(GameObject* other) override;
 };

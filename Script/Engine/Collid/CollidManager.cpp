@@ -15,12 +15,17 @@ void CollidManager::Update()
 	auto players = FindTagObjects(Tag::PLAYER);
 	auto stages = FindTagObjects(Tag::STAGE);
 	auto gimmicks = FindTagObjects(Tag::GIMMICK);
+	auto attacks = FindTagObjects(Tag::ATTACK);
 
 	//当たり判定
 	//プレイヤーとステージ
 	Collision(players, stages);
 	//プレイヤーとギミック
 	Collision(players, gimmicks);
+	//プレイヤーとアタック
+	Collision(players, attacks);
+	//ステージとアタック
+	Collision(stages, attacks);
 }
 
 void CollidManager::Draw()
@@ -29,10 +34,12 @@ void CollidManager::Draw()
 	auto players = FindTagObjects(Tag::PLAYER);
 	auto stages = FindTagObjects(Tag::STAGE);
 	auto gimmicks = FindTagObjects(Tag::GIMMICK);
+	auto attacks = FindTagObjects(Tag::ATTACK);
 
 	for (auto p : players)DrawCollider(p);
 	for (auto s : stages)DrawCollider(s);
 	for (auto g : gimmicks)DrawCollider(g);
+	for (auto a : attacks)DrawCollider(a);
 }
 
 void CollidManager::Collision(const std::vector<GameObject*> listA, const std::vector<GameObject*> listB)

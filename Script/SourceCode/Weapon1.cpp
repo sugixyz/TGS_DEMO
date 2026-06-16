@@ -1,5 +1,6 @@
 ﻿#include "Weapon1.h"
 #include"Player.h"
+#include"Bullet.h"
 
 int Weapon1::BULLET_NUMBER;
 float Weapon1::BULLET_SPEED;
@@ -27,7 +28,7 @@ void Weapon1::Draw()
 	{
 		Vector2 start = position;
 		Vector2 end = start + direction * Math2D::Length(Vector2(WIN_WIDTH, WIN_HEIGHT));
-		DrawLine(start.x, start.y, end.x, end.y, COL_RED);
+		DrawLine(start.x, start.y, end.x, end.y, COL_RED, ATTACK_RADIUS);
 	}
 }
 
@@ -44,6 +45,7 @@ void Weapon1::Attack(Player* owner)
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
 		//ToDo : ここで攻撃の当たり判定用クラス生成
+		new Bullet(position, direction * BULLET_SPEED, ATTACK_RADIUS);
 		life--;
 		if (life <= 0)
 		{

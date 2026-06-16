@@ -9,7 +9,9 @@ enum class Layer : uint32_t
 	PLAYER = 1 << 0,
 	ENEMY = 1 << 1,
 	STAGE = 1 << 2,
-	GIMMICK = 1 << 3
+	GIMMICK = 1 << 3,
+	PLAYER_ATTACK = 1 << 4,
+	ENEMY_ATTACK = 1 << 5
 };
 
 //コライダーの構造体
