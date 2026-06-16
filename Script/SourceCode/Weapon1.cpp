@@ -1,15 +1,15 @@
 ﻿#include "Weapon1.h"
 #include"Player.h"
 
-int Weapon1::LIFE;
-float Weapon1::ATTACK_LENGHT;
+int Weapon1::BULLET_NUMBER;
+float Weapon1::BULLET_SPEED;
 float Weapon1::ATTACK_RADIUS;
 
 Weapon1::Weapon1()
 	:Weapon(Tag::ITEM)
 {
 	type = ItemType::WEAPON1;
-	life = LIFE;
+	life = BULLET_NUMBER;
 }
 
 Weapon1::~Weapon1()
@@ -26,8 +26,8 @@ void Weapon1::Draw()
 	if (isAttack)
 	{
 		Vector2 start = position;
-		Vector2 end = start + direction * ATTACK_LENGHT;
-		DrawLine(start.x, start.y, end.x, end.y, COL_RED, ATTACK_RADIUS);
+		Vector2 end = start + direction * Math2D::Length(Vector2(WIN_WIDTH, WIN_HEIGHT));
+		DrawLine(start.x, start.y, end.x, end.y, COL_RED);
 	}
 }
 
