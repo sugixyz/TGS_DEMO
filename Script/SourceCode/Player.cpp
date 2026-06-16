@@ -17,7 +17,10 @@ Player::Player(int index)
 	radius = RADIUS;
 	direction = Math2D::UP;
 
-	uint32_t mask = (uint32_t)Layer::STAGE | (uint32_t)Layer::GIMMICK;
+	uint32_t mask = (uint32_t)Layer::STAGE |
+		(uint32_t)Layer::GIMMICK |
+		(uint32_t)Layer::ENEMY |
+		(uint32_t)Layer::ENEMY_ATTACK;
 	SetCenterCircle(Layer::PLAYER, mask);
 }
 

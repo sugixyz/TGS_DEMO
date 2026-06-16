@@ -1,5 +1,6 @@
 ﻿#include "AiDirector.h"
 #include"Player.h"
+#include"Enemy.h"
 #include"StageObject.h"
 #include"Base.h"
 #include"MaterialWarehouse.h"
@@ -13,6 +14,7 @@ AiDirector::AiDirector()
 {
 	new Player(0);
 	new Player(1);
+	new Enemy(Vector2(WIN_WIDTH / 2, WIN_HEIGHT / 4));
 	CreateStageObject();
 	CreateBase();
 }

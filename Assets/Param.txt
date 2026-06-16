@@ -1,6 +1,5 @@
 //プレイヤーのパラメータ
 [Player]
-
 //最大HP
 MAX_HP = 10
 //移動速度
@@ -15,17 +14,23 @@ RADIUS = 24
 
 //ギミックのパラメータ
 [Gimmick]
-
 //インタラクト可能な範囲（半径）
 INTERACT_LENGHT = 60
 
 
 //武器１（銃）のパラメータ
 [Weapon1]
-
 //武器の弾数
 BULLET_NUMBER = 20
 //弾の速度
-BULLET_SPEED = 30;
+BULLET_SPEED = 40;
 //攻撃の半径
 ATTACK_RADIUS = 5
+
+
+//敵のパラメータ
+[Enemy]
+//移動速度
+SPEED = 8
+//敵の半径
+RADIUS = 24;

@@ -2,6 +2,7 @@
 #include"../../SourceCode/Player.h"
 #include"../../SourceCode/Gimmick.h"
 #include"../../SourceCode/Weapon1.h"
+#include"../../SourceCode/Enemy.h"
 
 void Loader::AllClassParamLoad()
 {
@@ -48,6 +49,11 @@ void Loader::AllClassParamLoad()
 				if (key == "BULLET_NUMBER") { ss >> Weapon1::BULLET_NUMBER; }
 				else if (key == "BULLET_SPEED") { ss >> Weapon1::BULLET_SPEED; }
 				else if (key == "ATTACK_RADIUS") { ss >> Weapon1::ATTACK_RADIUS; }
+			}
+			else if (currentSection == "Enemy")
+			{
+				if (key == "SPEED") { ss >> Enemy::SPEED; }
+				else if (key == "RADIUS") { ss >> Enemy::RADIUS; }
 			}
 		}
 	}

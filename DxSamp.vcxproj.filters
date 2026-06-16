@@ -40,6 +40,9 @@
     <Filter Include="Attack">
       <UniqueIdentifier>{e34e77f9-d2de-4341-bb3a-fcd2281f6aea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{211cb208-96e7-48f1-954a-bace38d7c6a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Script\Engine\Tool\CsvReader.cpp">
@@ -118,6 +121,7 @@
     <ClCompile Include="Script\SourceCode\Bullet.cpp">
       <Filter>Attack</Filter>
     </ClCompile>
+    <ClCompile Include="Script\SourceCode\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Engine\Tool\CsvReader.h">
@@ -236,6 +240,9 @@
     </ClInclude>
     <ClInclude Include="Script\SourceCode\Bullet.h">
       <Filter>Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Enemy.h">
+      <Filter>Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
