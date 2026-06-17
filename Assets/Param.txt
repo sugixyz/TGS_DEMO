@@ -12,6 +12,14 @@ SPAWN_POS_2 = 1250 750
 RADIUS = 24
 
 
+//敵のパラメータ
+[Enemy]
+//移動速度
+SPEED = 8
+//敵の半径
+RADIUS = 24
+
+
 //ギミックのパラメータ
 [Gimmick]
 //インタラクト可能な範囲（半径）
@@ -23,14 +31,15 @@ INTERACT_LENGHT = 60
 //武器の弾数
 BULLET_NUMBER = 20
 //弾の速度
-BULLET_SPEED = 40;
+BULLET_SPEED = 40
 //攻撃の半径
 ATTACK_RADIUS = 5
 
-
-//敵のパラメータ
-[Enemy]
-//移動速度
-SPEED = 8
-//敵の半径
-RADIUS = 24;
+//武器２（爆弾）のパラメータ
+[Weapon2]
+//攻撃の範囲
+ATTACK_RANGE = 400
+//攻撃の半径
+ATTACK_RADIUS = 40
+//落下までの時間
+FALL_TIME = 2

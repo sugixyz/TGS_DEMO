@@ -124,6 +124,9 @@
     <ClCompile Include="Script\SourceCode\Enemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Script\SourceCode\Weapon2.cpp">
+      <Filter>Item\Weapon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Engine\Tool\CsvReader.h">
@@ -245,6 +248,9 @@
     </ClInclude>
     <ClInclude Include="Script\SourceCode\Enemy.h">
       <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\SourceCode\Weapon2.h">
+      <Filter>Item\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include"Weapon.h"
 
-//銃器（レーザー）
+//銃器
 class Weapon1 : public Weapon
 {
 public:

@@ -3,6 +3,7 @@
 #include"../../SourceCode/Gimmick.h"
 #include"../../SourceCode/Weapon1.h"
 #include"../../SourceCode/Enemy.h"
+#include"../../SourceCode/Weapon2.h"
 
 void Loader::AllClassParamLoad()
 {
@@ -40,6 +41,11 @@ void Loader::AllClassParamLoad()
 				else if (key == "SPAWN_POS_2") { ss >> Player::SPAWN_POS[1].x >> Player::SPAWN_POS[1].y; }
 				else if (key == "RADIUS") { ss >> Player::RADIUS; }
 			}
+			else if (currentSection == "Enemy")
+			{
+				if (key == "SPEED") { ss >> Enemy::SPEED; }
+				else if (key == "RADIUS") { ss >> Enemy::RADIUS; }
+			}
 			else if (currentSection == "Gimmick")
 			{
 				if (key == "INTERACT_LENGHT") { ss >> Gimmick::INTERACT_LENGHT; }
@@ -50,10 +56,11 @@ void Loader::AllClassParamLoad()
 				else if (key == "BULLET_SPEED") { ss >> Weapon1::BULLET_SPEED; }
 				else if (key == "ATTACK_RADIUS") { ss >> Weapon1::ATTACK_RADIUS; }
 			}
-			else if (currentSection == "Enemy")
+			else if (currentSection == "Weapon2")
 			{
-				if (key == "SPEED") { ss >> Enemy::SPEED; }
-				else if (key == "RADIUS") { ss >> Enemy::RADIUS; }
+				if (key == "ATTACK_RANGE") { ss >> Weapon2::ATTACK_RANGE; }
+				else if (key == "ATTACK_RADIUS") { ss >> Weapon2::ATTACK_RADIUS; }
+				else if (key == "FALL_TIME") { ss >> Weapon2::FALL_TIME; }
 			}
 		}
 	}

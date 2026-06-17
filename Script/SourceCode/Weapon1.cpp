@@ -44,7 +44,6 @@ void Weapon1::Attack(Player* owner)
 
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
-		//ToDo : ここで攻撃の当たり判定用クラス生成
 		new Bullet(position, direction * BULLET_SPEED, ATTACK_RADIUS);
 		life--;
 		if (life <= 0)

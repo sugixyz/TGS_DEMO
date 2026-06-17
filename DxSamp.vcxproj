@@ -158,6 +158,7 @@
     <ClCompile Include="Script\SourceCode\Table.cpp" />
     <ClCompile Include="Script\SourceCode\Ui.cpp" />
     <ClCompile Include="Script\SourceCode\Weapon1.cpp" />
+    <ClCompile Include="Script\SourceCode\Weapon2.cpp" />
     <ClCompile Include="Script\theMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,7 @@
     <ClInclude Include="Script\SourceCode\Ui.h" />
     <ClInclude Include="Script\SourceCode\Weapon.h" />
     <ClInclude Include="Script\SourceCode\Weapon1.h" />
+    <ClInclude Include="Script\SourceCode\Weapon2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
