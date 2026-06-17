@@ -121,7 +121,9 @@
     <ClCompile Include="Script\SourceCode\Bullet.cpp">
       <Filter>Attack</Filter>
     </ClCompile>
-    <ClCompile Include="Script\SourceCode\Enemy.cpp" />
+    <ClCompile Include="Script\SourceCode\Enemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Engine\Tool\CsvReader.h">
