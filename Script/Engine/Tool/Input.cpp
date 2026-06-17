@@ -134,8 +134,8 @@ void Input::AssociateKey(int id,int& bit)
 		else if (Input::IsKeyUP(KEY_INPUT_D))stickX[id] = 0;
 		//Fでパッド１のボタンA
 		if (Input::IsKeepKeyDown(KEY_INPUT_F))bit = bit | 1 << Pad::A;
-		//Eでパッド１のボタンRB
-		if (Input::IsKeepKeyDown(KEY_INPUT_E))bit = bit | 1 << Pad::RB;
+		//左sftでパッド１のボタンRB
+		if (Input::IsKeepKeyDown(KEY_INPUT_LSHIFT))bit = bit | 1 << Pad::RB;
 	}
 
 	//パッド２
