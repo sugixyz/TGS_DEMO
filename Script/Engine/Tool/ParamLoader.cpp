@@ -35,16 +35,16 @@ void Loader::AllClassParamLoad()
 		{
 			if (currentSection == "Player")
 			{
-				if (key == "MAX_HP") { ss >> Player::MAX_HP; }
-				else if (key == "SPEED") { ss >> Player::SPEED; }
-				else if (key == "SPAWN_POS_1") { ss >> Player::SPAWN_POS[0].x >> Player::SPAWN_POS[0].y; }
-				else if (key == "SPAWN_POS_2") { ss >> Player::SPAWN_POS[1].x >> Player::SPAWN_POS[1].y; }
-				else if (key == "RADIUS") { ss >> Player::RADIUS; }
+				if		(key == "MAX_HP")		{ ss >> Player::MAX_HP; }
+				else if (key == "SPEED")		{ ss >> Player::SPEED; }
+				else if (key == "SPAWN_POS_1")	{ ss >> Player::SPAWN_POS[0].x >> Player::SPAWN_POS[0].y; }
+				else if (key == "SPAWN_POS_2")	{ ss >> Player::SPAWN_POS[1].x >> Player::SPAWN_POS[1].y; }
+				else if (key == "RADIUS")		{ ss >> Player::RADIUS; }
 			}
 			else if (currentSection == "Enemy")
 			{
-				if (key == "SPEED") { ss >> Enemy::SPEED; }
-				else if (key == "RADIUS") { ss >> Enemy::RADIUS; }
+				if		(key == "SPEED")	{ ss >> Enemy::SPEED; }
+				else if (key == "RADIUS")	{ ss >> Enemy::RADIUS; }
 			}
 			else if (currentSection == "Gimmick")
 			{
@@ -52,15 +52,17 @@ void Loader::AllClassParamLoad()
 			}
 			else if (currentSection == "Weapon1")
 			{
-				if (key == "BULLET_NUMBER") { ss >> Weapon1::BULLET_NUMBER; }
-				else if (key == "BULLET_SPEED") { ss >> Weapon1::BULLET_SPEED; }
-				else if (key == "ATTACK_RADIUS") { ss >> Weapon1::ATTACK_RADIUS; }
+				if		(key == "BULLET_NUMBER")	{ ss >> Weapon1::BULLET_NUMBER; }
+				else if (key == "BULLET_SPEED")		{ ss >> Weapon1::BULLET_SPEED; }
+				else if (key == "ATTACK_RADIUS")	{ ss >> Weapon1::ATTACK_RADIUS; }
 			}
 			else if (currentSection == "Weapon2")
 			{
-				if (key == "ATTACK_RANGE") { ss >> Weapon2::ATTACK_RANGE; }
-				else if (key == "ATTACK_RADIUS") { ss >> Weapon2::ATTACK_RADIUS; }
-				else if (key == "FALL_TIME") { ss >> Weapon2::FALL_TIME; }
+				if		(key == "BOMB_NUMBER")	{ ss >> Weapon2::BOMB_NUMBER; }
+				else if	(key == "ATTACK_RANGE")	{ ss >> Weapon2::ATTACK_RANGE; }
+				else if (key == "ATTACK_RADIUS"){ ss >> Weapon2::ATTACK_RADIUS; }
+				else if (key == "FALL_TIME")	{ ss >> Weapon2::FALL_TIME; }
+				else if (key == "AIM_SPEED")	{ ss >> Weapon2::AIM_SPEED; }
 			}
 		}
 	}

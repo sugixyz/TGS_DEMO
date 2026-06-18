@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include"Weapon.h"
 
 //爆弾
@@ -14,8 +14,9 @@ private:
 	float range;
 	Vector2 attackPos;
 public:
+	static float BOMB_NUMBER;
 	static float ATTACK_RANGE;
 	static float ATTACK_RADIUS;
 	static float FALL_TIME;
-	// ToDo : エイム調節用の速度定数追加
+	static float AIM_SPEED;
 };
