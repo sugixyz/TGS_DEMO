@@ -2,7 +2,7 @@
 #include"Player.h"
 #include"Bomb.h"
 
-float Weapon2::BOMB_NUMBER;
+int Weapon2::BOMB_NUMBER;
 float Weapon2::ATTACK_RANGE;
 float Weapon2::ATTACK_RADIUS;
 float Weapon2::FALL_TIME;
@@ -11,7 +11,7 @@ float Weapon2::AIM_SPEED;
 Weapon2::Weapon2()
 	:Weapon(Tag::ITEM)
 {
-	type = ItemType::WEAPON1;
+	type = ItemType::WEAPON2;
 	life = BOMB_NUMBER;
 }
 

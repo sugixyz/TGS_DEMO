@@ -1,9 +1,10 @@
 ﻿#include "ParamLoader.h"
 #include"../../SourceCode/Player.h"
+#include"../../SourceCode/Enemy.h"
 #include"../../SourceCode/Gimmick.h"
 #include"../../SourceCode/Weapon1.h"
-#include"../../SourceCode/Enemy.h"
 #include"../../SourceCode/Weapon2.h"
+#include"../../SourceCode/Weapon3.h"
 
 void Loader::AllClassParamLoad()
 {
@@ -63,6 +64,13 @@ void Loader::AllClassParamLoad()
 				else if (key == "ATTACK_RADIUS"){ ss >> Weapon2::ATTACK_RADIUS; }
 				else if (key == "FALL_TIME")	{ ss >> Weapon2::FALL_TIME; }
 				else if (key == "AIM_SPEED")	{ ss >> Weapon2::AIM_SPEED; }
+			}
+			else if (currentSection == "Weapon3")
+			{
+				if		(key == "SWORD_NUMBER")		{ ss >> Weapon3::SWORD_NUMBER; }
+				else if (key == "ATTACK_RADIUS")	{ ss >> Weapon3::ATTACK_RADIUS; }
+				else if (key == "MOVE_DISTANCE")	{ ss >> Weapon3::MOVE_DISTANCE; }
+				else if (key == "MOVE_TIME")		{ ss >> Weapon3::MOVE_TIME; }
 			}
 		}
 	}

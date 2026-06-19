@@ -1,8 +1,8 @@
 ﻿#include "CraftTable.h"
-#include"Item.h"
 #include"Material.h"
 #include"Weapon1.h"
 #include"Weapon2.h"
+#include"Weapon3.h"
 
 CraftTable::CraftTable(Vector2 pos)
 	:Gimmick(Tag::GIMMICK)
@@ -71,7 +71,7 @@ Item* CraftTable::Craft(Item* a)
 	//クラフトレシピ
 	if (craftKey == (ItemType::MATERIAL1 | ItemType::MATERIAL2))return new Weapon1();
 	else if (craftKey == (ItemType::MATERIAL1 | ItemType::MATERIAL1))return new Weapon2();
-	else if (craftKey == (ItemType::MATERIAL2 | ItemType::MATERIAL2))return nullptr;
+	else if (craftKey == (ItemType::MATERIAL2 | ItemType::MATERIAL2))return new Weapon3();
 	else if (craftKey == (ItemType::WEAPON1 | ItemType::MATERIAL_ENEMY))return nullptr;
 	else if (craftKey == (ItemType::WEAPON2 | ItemType::MATERIAL_ENEMY))return nullptr;
 	else if (craftKey == (ItemType::WEAPON3 | ItemType::MATERIAL_ENEMY))return nullptr;

@@ -38,13 +38,25 @@ ATTACK_RADIUS = 5
 
 //武器２（爆弾）のパラメータ
 [Weapon2]
-//武器の弾数
-BOMB_NUMBER = 5
+//武器の使用可能回数
+BOMB_NUMBER = 2
 //攻撃の範囲
 ATTACK_RANGE = 600
 //攻撃の半径
-ATTACK_RADIUS = 60
+ATTACK_RADIUS = 80
 //落下までの時間
 FALL_TIME = 2
 //エイムの速度
 AIM_SPEED = 10
+
+
+//武器３（剣）のパラメータ
+[Weapon3]
+//武器の使用可能回数
+SWORD_NUMBER = 5
+//攻撃の半径
+ATTACK_RADIUS = 50
+//攻撃時の移動距離
+MOVE_DISTANCE = 150
+//移動にかかる時間
+MOVE_TIME = 0.2

@@ -14,7 +14,7 @@ private:
 	float range;
 	Vector2 attackPos;
 public:
-	static float BOMB_NUMBER;
+	static int BOMB_NUMBER;
 	static float ATTACK_RANGE;
 	static float ATTACK_RADIUS;
 	static float FALL_TIME;
