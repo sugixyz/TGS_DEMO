@@ -41,9 +41,8 @@ void Weapon3::Attack(Player * owner)
 
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
-		Vector2 movePos = owner->GetPos() + owner->GetDir() * MOVE_DISTANCE;
-		owner->SetPos(movePos);
-		owner->ItemMove();
+		Vector2 movePos = owner->GetPos() + owner->GetDir()* MOVE_DISTANCE;;
+		owner->MoveAttack(movePos, MOVE_TIME);
 		//ToDo : ここで当たり判定用クラスを生成
 		life--;
 		if (life <= 0)
@@ -51,6 +50,8 @@ void Weapon3::Attack(Player * owner)
 			owner->BrokenHasWeapon();
 		}
 	}
+
+	owner->ItemMove();
 }
 
 void Weapon3::EnhanceWeapon()

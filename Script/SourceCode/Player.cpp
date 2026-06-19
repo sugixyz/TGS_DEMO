@@ -29,6 +29,8 @@ Player::~Player()
 
 void Player::Update()
 {
+	moveLerp.Update();
+
 	if (Attack())return;
 	Move();
 	Interact();
@@ -91,6 +93,11 @@ void Player::BrokenHasWeapon()
 	hasItem = nullptr;
 }
 
+void Player::MoveAttack(Vector2 movePos,float sec)
+{
+	moveLerp.Start(position, movePos, sec, [this](Vector2 pos) {SetPos(pos);});
+}
+
 void Player::CollisionWall(GameObject* wall)
 {
 	Collider wallCol = wall->GetCollider();
@@ -130,6 +137,8 @@ void Player::CollisionWall(GameObject* wall)
 			this->position.y += overlapY;
 		}
 	}
+
+	moveLerp.Reset();
 }
 
 void Player::CollisionGimmick(GameObject* other)

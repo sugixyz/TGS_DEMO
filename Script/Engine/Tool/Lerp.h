@@ -72,4 +72,12 @@ struct Lerp
 	{
 		return isActive;
 	}
+
+	void Reset()
+	{
+		duration = 0.0f;
+		elapSed = 0.0f;
+		isActive = false;
+		onUpdate = nullptr;
+	}
 };

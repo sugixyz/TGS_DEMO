@@ -57,6 +57,6 @@ SWORD_NUMBER = 5
 //攻撃の半径
 ATTACK_RADIUS = 50
 //攻撃時の移動距離
-MOVE_DISTANCE = 150
+MOVE_DISTANCE = 200
 //移動にかかる時間
-MOVE_TIME = 0.2
+MOVE_TIME = 0.1

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include"../Engine/Object/Character.h"
+#include"../Engine/Tool/Lerp.h"
 
 class Item;
 
@@ -25,6 +26,12 @@ public:
 	/// 持っている武器が壊れた
 	/// </summary>
 	void BrokenHasWeapon();
+	/// <summary>
+	/// 攻撃時の移動関数（剣が呼ぶ）
+	/// </summary>
+	/// <param name="movePos">移動先の座標</param>
+	/// <param name="sec">移動時間</param>
+	void MoveAttack(Vector2 movePos,float sec);
 private:
 	int hp;
 	//１Pか２Pか
@@ -33,6 +40,8 @@ private:
 	Item* hasItem = nullptr;
 	//インタラクト可能なギミック
 	GameObject* interactionGimmick = nullptr;
+	//攻撃時移動のラープ
+	Lerp<Vector2> moveLerp;
 private:
 	//壁と接触したときの処理
 	void CollisionWall(GameObject* other);
