@@ -1,5 +1,6 @@
 #include "Weapon3.h"
 #include"Player.h"
+#include"Slash.h"
 
 int Weapon3::SWORD_NUMBER;
 float Weapon3::ATTACK_RADIUS;
@@ -26,6 +27,16 @@ void Weapon3::Draw()
 
 	if (isAttack)
 	{
+		float x = position.x;
+		float y = position.y;
+		DrawCircle(x, y, ATTACK_RADIUS, COL_RED, TRUE);
+		Vector2 move = position + direction * MOVE_DISTANCE;
+		x = move.x;
+		y = move.y;
+		DrawCircle(x, y, ATTACK_RADIUS, COL_RED, TRUE);
+		Vector2 p1 = position;
+		Vector2 p2 = move;
+		DrawLine(p1.x, p1.y, p2.x, p2.y, COL_RED, ATTACK_RADIUS * 2);
 	}
 }
 
@@ -41,9 +52,10 @@ void Weapon3::Attack(Player * owner)
 
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
-		Vector2 movePos = owner->GetPos() + owner->GetDir()* MOVE_DISTANCE;;
+		Vector2 move = owner->GetDir() * MOVE_DISTANCE;
+		Vector2 movePos = owner->GetPos() + move;
 		owner->MoveAttack(movePos, MOVE_TIME);
-		//ToDo : ここで当たり判定用クラスを生成
+		new Slash(owner->GetPos(), move, ATTACK_RADIUS);
 		life--;
 		if (life <= 0)
 		{
