@@ -4,12 +4,13 @@
 class Slash : public Attack
 {
 public:
-	Slash(Vector2 pos,Vector2 moveVec, float rad);
+	Slash(GameObject* pl, float rad, float sec);
 	~Slash();
 	void Update() override;
 	void Draw() override;
-	//void OnCollision(GameObject* other) override;
-	void IEDestroy();
+	void OnCollision(GameObject* other) override;
 private:
-	Coroutine coroutine;
+	GameObject* owner;
+	Timer dethTimer;
+	float time;
 };

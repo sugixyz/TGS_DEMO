@@ -55,7 +55,7 @@ void Weapon3::Attack(Player * owner)
 		Vector2 move = owner->GetDir() * MOVE_DISTANCE;
 		Vector2 movePos = owner->GetPos() + move;
 		owner->MoveAttack(movePos, MOVE_TIME);
-		new Slash(owner->GetPos(), move, ATTACK_RADIUS);
+		new Slash(owner, ATTACK_RADIUS, MOVE_TIME);
 		life--;
 		if (life <= 0)
 		{

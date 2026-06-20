@@ -1,14 +1,15 @@
 #include "Slash.h"
 
-Slash::Slash(Vector2 pos, Vector2 moveVec, float rad)
+Slash::Slash(GameObject* pl, float rad, float sec)
 	:Attack(Tag::ATTACK)
 {
-	position = pos + moveVec;
+	owner = pl;
+	position = owner->GetPos();
 	radius = rad;
+	time = sec;
 
-	Vector2 st = { 0,0 };
 	uint32_t mask = (uint32_t)Layer::ENEMY | (uint32_t)Layer::STAGE;
-	SetCapsule(st, moveVec * -1, rad, Layer::PLAYER_ATTACK, mask);
+	SetCenterCircle(Layer::PLAYER_ATTACK, mask);
 }
 
 Slash::~Slash()
@@ -16,8 +17,12 @@ Slash::~Slash()
 
 void Slash::Update()
 {
-	coroutine.Update();
-	coroutine.Start([this] {IEDestroy();});
+	dethTimer.Update();
+	position = owner->GetPos();
+	if (dethTimer.isExpired(time))
+	{
+		DestroyMe();
+	}
 }
 
 void Slash::Draw()
@@ -25,7 +30,8 @@ void Slash::Draw()
 	DrawCircle(position.x, position.y, radius, COL_BLACK, TRUE);
 }
 
-void Slash::IEDestroy()
+void Slash::OnCollision(GameObject* other)
 {
 	DestroyMe();
 }
+
