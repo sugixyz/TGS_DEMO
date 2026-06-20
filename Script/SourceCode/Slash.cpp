@@ -1,10 +1,11 @@
 #include "Slash.h"
 
-Slash::Slash(GameObject* pl, float rad, float sec)
+Slash::Slash(GameObject* pl,Vector2 move, float rad, float sec)
 	:Attack(Tag::ATTACK)
 {
 	owner = pl;
-	position = owner->GetPos();
+	moveVec = move;
+	position = owner->GetPos() + moveVec;
 	radius = rad;
 	time = sec;
 
@@ -18,7 +19,7 @@ Slash::~Slash()
 void Slash::Update()
 {
 	dethTimer.Update();
-	position = owner->GetPos();
+	Move();
 	if (dethTimer.isExpired(time))
 	{
 		DestroyMe();
@@ -30,8 +31,20 @@ void Slash::Draw()
 	DrawCircle(position.x, position.y, radius, COL_BLACK, TRUE);
 }
 
+void Slash::Move()
+{
+	//位置をプレイヤーの武器分前に移動
+	position = owner->GetPos() + moveVec;
+	//前フレーム時にいた場所も判定を取りたい場合有効化
+	//myCollider.cPosB = moveVec * -1;
+}
+
 void Slash::OnCollision(GameObject* other)
 {
-	DestroyMe();
+	//当たった相手が壁なら消える
+	if (other->GetTag() == Tag::STAGE)
+	{
+		DestroyMe();
+	}
 }
 

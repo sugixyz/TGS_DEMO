@@ -42,6 +42,7 @@ void Weapon3::Draw()
 
 void Weapon3::Attack(Player * owner)
 {
+	//スティックの方向を取得
 	Vector2 stick = Input::GetStick(owner->GetId());
 	if (stick != Vector2(0, 0))
 	{
@@ -50,12 +51,15 @@ void Weapon3::Attack(Player * owner)
 	}
 	SetDir(owner->GetDir());
 
+	//攻撃
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
+		//移動ベクトル
 		Vector2 move = owner->GetDir() * MOVE_DISTANCE;
-		Vector2 movePos = owner->GetPos() + move;
-		owner->MoveAttack(movePos, MOVE_TIME);
-		new Slash(owner, ATTACK_RADIUS, MOVE_TIME);
+		//プレイヤーを攻撃に合わせて移動
+		owner->MoveAttack(move, MOVE_TIME);
+		//斬撃の生成
+		new Slash(owner,position - owner->GetPos(), ATTACK_RADIUS, MOVE_TIME);
 		life--;
 		if (life <= 0)
 		{

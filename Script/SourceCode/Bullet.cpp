@@ -8,7 +8,6 @@ Bullet::Bullet(Vector2 pos, Vector2 vel,float rad)
 	radius = rad;
 
 	uint32_t mask = (uint32_t)Layer::ENEMY | (uint32_t)Layer::STAGE;
-
 	SetCenterCircle(Layer::PLAYER_ATTACK, mask);
 }
 

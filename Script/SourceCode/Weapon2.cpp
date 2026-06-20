@@ -62,7 +62,7 @@ void Weapon2::Attack(Player * owner)
 
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
-		//ToDo : ここで攻撃の当たり判定用クラス生成
+		//爆弾を生成
 		new Bomb(position, attackPos, ATTACK_RADIUS, FALL_TIME);
 		life--;
 		if (life <= 0)

@@ -41,6 +41,7 @@ void Loader::AllClassParamLoad()
 				else if (key == "SPAWN_POS_1")	{ ss >> Player::SPAWN_POS[0].x >> Player::SPAWN_POS[0].y; }
 				else if (key == "SPAWN_POS_2")	{ ss >> Player::SPAWN_POS[1].x >> Player::SPAWN_POS[1].y; }
 				else if (key == "RADIUS")		{ ss >> Player::RADIUS; }
+				else if (key == "ITEM_OFFSET")	{ ss >> Player::ITEM_OFFSET; }
 			}
 			else if (currentSection == "Enemy")
 			{

@@ -34,6 +34,7 @@ void Weapon1::Draw()
 
 void Weapon1::Attack(Player* owner)
 {
+	//スティックの方向を取得
 	Vector2 stick = Input::GetStick(owner->GetId());
 	if (stick != Vector2(0, 0))
 	{
@@ -42,8 +43,10 @@ void Weapon1::Attack(Player* owner)
 	}
 	SetDir(owner->GetDir());
 
+	//攻撃
 	if (Input::IsPadDown(Pad::A, owner->GetId()))
 	{
+		//弾を生成
 		new Bullet(position, direction * BULLET_SPEED, ATTACK_RADIUS);
 		life--;
 		if (life <= 0)

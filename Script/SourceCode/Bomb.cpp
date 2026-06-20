@@ -27,10 +27,12 @@ void Bomb::Draw()
 void Bomb::Move()
 {
 	moveLerp.Update();
+	//移動が終了したら（ラープが終了していれば）判定生成
 	if (not moveLerp.IsActive())
 	{
 		uint32_t mask = (uint32_t)Layer::ENEMY;
 		SetCenterCircle(Layer::PLAYER_ATTACK, mask);
+		//1フレーム後に削除
 		coroutine.Start([this] {IEDestroy(); });
 	}
 }

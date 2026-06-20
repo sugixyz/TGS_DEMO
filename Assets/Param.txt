@@ -10,6 +10,8 @@ SPAWN_POS_1 = 750 750
 SPAWN_POS_2 = 1250 750
 //プレイヤーの半径
 RADIUS = 24
+//アイテムの持つ位置（どのくらいずらすか）
+ITEM_OFFSET = 20
 
 
 //敵のパラメータ
@@ -59,4 +61,4 @@ ATTACK_RADIUS = 50
 //攻撃時の移動距離
 MOVE_DISTANCE = 200
 //移動にかかる時間
-MOVE_TIME = 0.1
+MOVE_TIME = 3

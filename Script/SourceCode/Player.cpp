@@ -7,6 +7,7 @@ int Player::MAX_HP;
 float Player::SPEED;
 Vector2 Player::SPAWN_POS[2];
 float Player::RADIUS;
+float Player::ITEM_OFFSET;
 
 Player::Player(int index)
 	:Character(Tag::PLAYER)
@@ -49,9 +50,11 @@ void Player::Draw()
 
 void Player::Move()
 {
+	//スティックの方向を取得	
 	Vector2 stick = Input::GetStick(id);
 	if (stick != Vector2(0, 0))
 	{
+		//スティックの方向に速度分の移動ベクトルを設定
 		direction = Math2D::Normalize(stick);
 		if (Math2D::Length(stick) >= 0.5f)
 		{
@@ -83,19 +86,20 @@ void Player::ItemMove()
 {
 	if (hasItem != nullptr)
 	{
-		hasItem->SetPos(Vector2(position + direction * 20));
+		hasItem->SetPos(Vector2(position + direction * ITEM_OFFSET));
 	}
 }
 
 void Player::BrokenHasWeapon()
 {
+	//持っている武器を破棄、破壊
 	hasItem->DestroyMe();
 	hasItem = nullptr;
 }
 
-void Player::MoveAttack(Vector2 movePos,float sec)
+void Player::MoveAttack(Vector2 move,float sec)
 {
-	moveLerp.Start(position, movePos, sec, [this](Vector2 pos) {SetPos(pos);});
+	moveLerp.Start(position, position + move, sec, [this](Vector2 pos) {SetPos(pos);});
 }
 
 void Player::CollisionWall(GameObject* wall)
@@ -149,9 +153,11 @@ void Player::CollisionGimmick(GameObject* other)
 		return;
 	}
 
+	//今インタラクト中のギミックとの距離を計算
 	float iLenghtSq = Math2D::LengthSq(position - interactionGimmick->GetPos());
 	float gLenghtSq = Math2D::LengthSq(position - other->GetPos());
 
+	//距離が近いほうをインタラクトギミックとして保存
 	if (iLenghtSq > gLenghtSq)interactionGimmick = other;
 }
 

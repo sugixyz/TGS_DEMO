@@ -29,9 +29,9 @@ public:
 	/// <summary>
 	/// 攻撃時の移動関数（剣が呼ぶ）
 	/// </summary>
-	/// <param name="movePos">移動先の座標</param>
+	/// <param name="movePos">移動ベクトル</param>
 	/// <param name="sec">移動時間</param>
-	void MoveAttack(Vector2 movePos,float sec);
+	void MoveAttack(Vector2 move,float sec);
 private:
 	int hp;
 	//１Pか２Pか
@@ -56,4 +56,5 @@ public:
 	static float SPEED;
 	static Vector2 SPAWN_POS[2];
 	static float RADIUS;
+	static float ITEM_OFFSET;
 };
