@@ -61,4 +61,4 @@ ATTACK_RADIUS = 50
 //攻撃時の移動距離
 MOVE_DISTANCE = 200
 //移動にかかる時間
-MOVE_TIME = 3
+MOVE_TIME = 0.1
